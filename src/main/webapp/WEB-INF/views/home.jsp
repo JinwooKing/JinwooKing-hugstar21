@@ -24,6 +24,11 @@
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 
 <title>jinstar</title>
+<style>
+body::-webkit-scrollbar { 
+    display: none; 
+}
+</style>
 </head>
 <body>
 	<header>
