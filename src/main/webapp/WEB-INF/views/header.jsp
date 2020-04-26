@@ -127,7 +127,7 @@ function menu(x) {
 }
 
 $(document).ready(function(){
-	//pc 크기 펼쳐진 mobile 메뉴와 검색창 사라지기
+	//pc크기 펼쳐진 mobile 메뉴와 검색창 사라지기
 	$(window).resize(function(){
 		if($(document).width()>960){
 			if($(".togglenav").css("display")==="block"){
@@ -144,10 +144,14 @@ $(document).ready(function(){
 	  });
 	//모바일 검색창 토글  
 	  $(".mobilebtn_search").click(function(){
-	    $(".togglenav").css("display","none");
+		  if($(".togglenav").css("display")==="block"){
+			  $(".mobilemenu").trigger("click");
+			  $(".togglenav").css("display","none");
+		  }    
 	    $(".togglesearch").slideToggle("slow");
-		  });
-	});
+	  });
+		
+});// end document
 	
 </script>
 </head>
