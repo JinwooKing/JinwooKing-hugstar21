@@ -7,54 +7,85 @@
 body {
   font-family: Arial;
   color: white;
-}
-.split {
-  height: 100%;
-  width: 50%;
-  position: fixed;
-  /* z-index: 1; */
-  top: 0;
   overflow-x: hidden;
-  padding-top: 20px;
 }
 .left {
-  left: 0;
   background-color: #90CAF9;
+  transition: 0.3s;
+}
+.left:hover{
+  background-color: #64B5F6
 }
 .right {
-  right: 0;
   background-color: #B2EBF2;
+  transition: 0.3s;
 }
-.centered {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
+.right:hover{
+  background-color: #80DEEA
 }
-.centered img {
+.column img {
   width: 150px;
   border-radius: 50%;
 }
+.column {
+  float: left;
+  width: 50%;
+  text-align: center;
+  height: 900px;
+  width: 50%;
+  padding-top: 330px;
+  z-index: 1;
+}
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 </style>
+<script>
+$(document).ready(function(){
+	// hugstar21클릭
+	$(".left").click(function(){		
+		if($(".right").css("width")==="0px"){
+			$(".left").css("width","50%");
+			$(".right").css("width","50%");
+		}else{
+		$(".left").css("width","100%");
+		$(".right").css("width","0%");
+		}
+	})
+	// JinwooKing클릭
+	$(".right").click(function(){
+		if($(".left").css("width")==="0px"){
+			$(".left").css("width","50%");
+			$(".right").css("width","50%");
+		}else{
+		$(".right").css("width","100%");
+		$(".left").css("width","0%");
+		}
+	})
+})
+</script>
 </head>
 <body>
-<div style="height: 1000px;">
-<div class="split left">
-  <div class="centered">
+<div style="height: 900px;">
+<div class="row">
+  <div class="column left">
     <img src="${pageContext.request.contextPath}/resources/img/eunbori/hugstar21.jpg" alt="eunbori">
     <h2>hugstar21</h2>
     <p>안은별</p>
   </div>
-</div>
-
-<div class="split right">
-  <div class="centered">
+  <div class="column right">
     <img src="${pageContext.request.contextPath}/resources/img/jinwoo/JinwooKing.jpg" alt="jinwoo">
     <h2>JinwooKing</h2>
     <p>박진우</p>
   </div>
+	</div>
 </div>
-</div>
+
+
+  
+
 </body>
 </html>
