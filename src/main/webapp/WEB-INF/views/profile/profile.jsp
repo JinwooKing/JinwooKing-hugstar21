@@ -38,7 +38,6 @@ h1{
   width: 50%;
   text-align: center;
   height: 93vh;
-  width: 50%;
   padding-top: 34vh;
 }
 /* Clear floats after the columns */
@@ -51,7 +50,7 @@ h1{
   display: flex;  
   background-color: white;
   border-bottom: 1px solid #d6d6d6;
-  max-width: 100%;
+  width: 100%;
   box-shadow: 0 1px 3px rgba(0,0,0,.4);
 }
 .pronav nav{
@@ -67,10 +66,14 @@ h1{
   text-decoration: none;
   padding: 9px 33px;
 }
-
-.pronav a:first-child{
-  padding-left: 44px;
+.row{
+	margin-right: 0px;
+	margin-left: 0px;
 }
+
+/* .pronav a:first-child{
+  padding-left: 44px;
+} */
 /* The sticky class is added to the navbar with JS when it reaches its scroll position */
 .sticky {
   position: fixed;
@@ -83,7 +86,8 @@ $(document).ready(function(){
 	// profile nav sticky
 	window.onscroll = function() {prosticky(); prbar();};
 	function prosticky() {
-		if (document.documentElement.scrollTop >= 900) {
+		let h = $('.column')[0].clientHeight;
+		if (document.documentElement.scrollTop >= h) {
 			  if($(".right").css("width")==="0px"){
 			  	eunpronav.classList.add("sticky")
 			  }else{

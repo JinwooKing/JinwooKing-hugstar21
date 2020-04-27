@@ -144,8 +144,6 @@ var height = document.documentElement.scrollHeight - document.documentElement.cl
 var scrolled = (winScroll / height) * 100;
 document.getElementById("prBar").style.width = scrolled + "%";
 }
-
-
 function menu(x) {
   x.classList.toggle("change");
 }
@@ -173,9 +171,7 @@ $(document).ready(function(){
 		  }    
 	    $(".togglesearch").slideToggle("slow");
 	  });
-		
-});// end document
-	
+});// end document	
 </script>
 </head>
 <body>
