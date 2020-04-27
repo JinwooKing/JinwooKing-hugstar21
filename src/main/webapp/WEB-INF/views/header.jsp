@@ -16,9 +16,9 @@ header{
     max-width: 100%;
     height: 68px;
     background-color: white;
-    border-bottom: 1px solid #d6d6d6;
+    border-bottom: 1px solid #d6d6d6;    
 }
-nav{
+.navdiv .navbar{
 	height: 67px;
 	max-width: 1180px;
 	background-color: white;
@@ -194,7 +194,7 @@ $(document).ready(function(){
 	  <a class="navbar-brand pcnav" href="profile">Profile</a>
 	  <a class="navbar-brand pcnav" href="Story">Story</a>
 	  <a class="navbar-brand pcnav" href="Board">Board</a>
-	  <a class="navbar-brand pcnav" href="About">About</a>
+	  <!-- <a class="navbar-brand pcnav" href="About">About</a> -->
 	  
 	  <form class="form-inline pcnav">
 	    <input class="form-control mr-sm-1 search_input" type="search" placeholder="jinstar에서 검색" aria-label="Search">
@@ -215,7 +215,7 @@ $(document).ready(function(){
 		  <li class="list-group-item"><a href="profile">Profile</a></li>
 		  <li class="list-group-item"><a href="Story">Story</a></li>
 		  <li class="list-group-item"><a href="Board">Board</a></li>
-		  <li class="list-group-item"><a href="About">About</a></li>
+		  <!-- <li class="list-group-item"><a href="About">About</a></li> -->
 		</ul>
 	</div>
 	<div class="togglesearch">

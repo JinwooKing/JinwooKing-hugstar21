@@ -4,7 +4,6 @@
 <html>
 <head>
 <style>
-
 footer {
     clear: both;
     width: 100%;
@@ -13,7 +12,6 @@ footer {
     background-color: #f9f9f9;
     position: absolute;
 }
-
 .footer_sec {
     border-top: 1px solid #efefef;
 }
