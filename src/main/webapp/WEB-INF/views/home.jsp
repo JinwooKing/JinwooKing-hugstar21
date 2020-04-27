@@ -26,7 +26,7 @@
 <title>jinstar</title>
 <style>
 body::-webkit-scrollbar { 
-    display: none; 
+    display: none;
 }
 </style>
 </head>

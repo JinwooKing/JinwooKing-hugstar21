@@ -31,9 +31,9 @@ body {
   float: left;
   width: 50%;
   text-align: center;
-  height: 900px;
+  height: 94vh;
   width: 50%;
-  padding-top: 330px;
+  padding-top: 34vh;
   z-index: 1;
 }
 /* Clear floats after the columns */
@@ -49,11 +49,12 @@ $(document).ready(function(){
 	$(".left").click(function(){		
 		if($(".right").css("width")==="0px"){
 			$(".left").css("width","50%");
-			$(".right").css("width","50%");
+			$(".right").css({"width":"50%","display":"block"});
 		}else{
 		$(".left").css("width","100%");
-		$(".right").css("width","0%");
-		}
+		$(".right").css("width","0%")
+		setTimeout(() => {$(".right").css("display","none")}, 300);
+		} 
 	})
 	// JinwooKing클릭
 	$(".right").click(function(){
@@ -69,7 +70,7 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-<div style="height: 900px;">
+<div style="height: 94vh;">
 <div class="row">
   <div class="column left">
     <img src="${pageContext.request.contextPath}/resources/img/eunbori/hugstar21.jpg" alt="eunbori">
