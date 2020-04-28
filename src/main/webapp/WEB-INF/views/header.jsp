@@ -175,23 +175,29 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
+<!-- nav -->
 <div class="navdiv fixed-top">
 	<nav class="navbar fixed-top navbar-light">
+	
+	  <!-- mobile icon -->
 	  <div class="mobilemenu mobilenav" onclick="menu(this)">
 		 <div class="bar1"></div>
 		 <div class="bar2"></div>
 		 <div class="bar3"></div>
 	  </div>
-	
+	  
+	  <!-- jinstar img -->
 	  <a class="navbar-brand" href="${pageContext.request.contextPath}" style="font-weight: bolder;">
 	    <img src="${pageContext.request.contextPath}/resources/img/logo1.png" width="100" height="auto" class="d-inline-block align-top" alt="">
 	  </a>
 	  
+	  <!--  pcnav link -->
 	  <a class="navbar-brand pcnav" href="profile">Profile</a>
 	  <a class="navbar-brand pcnav" href="Story">Story</a>
 	  <a class="navbar-brand pcnav" href="Board">Board</a>
 	  <!-- <a class="navbar-brand pcnav" href="About">About</a> -->
 	  
+	  <!--  pcnav search -->
 	  <form class="form-inline pcnav">
 	    <input class="form-control mr-sm-1 search_input" type="search" placeholder="jinstar에서 검색" aria-label="Search">
 	    <button type="submit" class="pcbtn_search">
@@ -199,13 +205,18 @@ $(document).ready(function(){
 	    </button>
 	  </form>
 	
+	  <!-- mobile search call -->
 	  <button type="submit" class="mobilebtn_search mobilenav">
 	   	<i class="xi-search xi-x"></i>
 	  </button>
 	</nav>
+	
+	<!--  progress bar -->
 	<div class="progress-container">
     	<div class="progress-bar" id="prBar"></div>
   	</div>  	
+  	
+  	<!-- mobile nav link -->
 	<div class="togglenav">
 		<ul class="list-group list-group-flush">
 		  <li class="list-group-item"><a href="profile">Profile</a></li>
@@ -214,6 +225,8 @@ $(document).ready(function(){
 		  <!-- <li class="list-group-item"><a href="About">About</a></li> -->
 		</ul>
 	</div>
+	
+	<!-- mobile search input -->
 	<div class="togglesearch">
 		<form class="form-inline">
 			<input class="form-control mr-sm-1 search_input" type="search" placeholder="jinstar에서 검색" aria-label="Search">

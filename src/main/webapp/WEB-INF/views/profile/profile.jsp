@@ -7,9 +7,11 @@
 html {
   scroll-behavior: smooth;
 }
+a{
+	cursor: pointer;
+}
 body {
   font-family: Arial;
-  color: white;
   overflow-x: hidden;
 }
 h1{
@@ -34,6 +36,7 @@ h1{
   border-radius: 50%;
 }
 .column {
+  color: white;
   float: left;
   width: 50%;
   text-align: center;
@@ -46,6 +49,7 @@ h1{
   display: table;
   clear: both;
 }
+/* Navbar */
 .pronav {
   display: flex;  
   background-color: white;
@@ -59,7 +63,7 @@ h1{
   margin: 0px auto !important;
   padding: 0px;
 }
-/* Navbar links */
+/* Navbar */
 .pronav a {
   float: left;
   color: #f2f2f2;
@@ -70,10 +74,6 @@ h1{
 	margin-right: 0px;
 	margin-left: 0px;
 }
-
-/* .pronav a:first-child{
-  padding-left: 44px;
-} */
 /* The sticky class is added to the navbar with JS when it reaches its scroll position */
 .sticky {
   position: fixed;
@@ -82,11 +82,22 @@ h1{
 }
 </style>
 <script>
+//페이지 내부 이동
+function href(text){
+	if(text==="home"){
+		$('html').animate({scrollTop : 0}, 200);
+	}else if(text==="About"){
+		let h = $('.column')[0].clientHeight;
+		$('html').animate({scrollTop : h}, 200);
+	}	
+}
 $(document).ready(function(){
+	// home 이미지 끝
+	let h = $('.column')[0].clientHeight;
 	// profile nav sticky
 	window.onscroll = function() {prosticky(); prbar();};
 	function prosticky() {
-		let h = $('.column')[0].clientHeight;
+		
 		if (document.documentElement.scrollTop >= h) {
 			  if($(".right").css("width")==="0px"){
 			  	eunpronav.classList.add("sticky")
@@ -97,7 +108,7 @@ $(document).ready(function(){
 			  eunpronav.classList.remove("sticky");
 			  jinpronav.classList.remove("sticky");
 		  }
-	}
+	}	
 	// hugstar21클릭
 	$(".left").click(function(){		
 		if($(".right").css("width")==="0px"){
@@ -107,8 +118,9 @@ $(document).ready(function(){
 		$(".left").css("width","100%");
 		$(".right").css("width","0%")
 		setTimeout(() => {$(".right").css("display","none")}, 300);
-		setTimeout(() => {location.href="#eunpronav"}, 400);
-		} 
+		$('html').animate({scrollTop : h}, 400);
+
+		}; 
 	})
 	// JinwooKing클릭
 	$(".right").click(function(){
@@ -118,7 +130,7 @@ $(document).ready(function(){
 		}else{
 		$(".right").css("width","100%");
 		$(".left").css("width","0%");
-		setTimeout(() => {location.href="#jinpronav"}, 400);
+		$('html').animate({scrollTop : h}, 400);
 		}
 	})
 })
@@ -126,7 +138,7 @@ $(document).ready(function(){
 </head>
 <body>
 <!-- home -->
-<div style="height: 93vh;">
+<section style="height: 93vh;">
 	<div class="row">
 	  <div class="column left" data-toggle="collapse" data-target="#hugstar21">
 	    <img src="${pageContext.request.contextPath}/resources/img/eunbori/hugstar21.jpg" alt="eunbori">
@@ -140,19 +152,24 @@ $(document).ready(function(){
 	    <p>박진우</p>
 	  </div>
 	</div>
-</div>
-<!-- about -->
-	<div id="hugstar21" class="collapse">
-		<div id="eunpronav" class="pronav">
-			<nav class="navbar navbar-light">
-				<a class="navbar-brand" href="#">Home</a>
-				<a class="navbar-brand" href="#">About</a>
-				<a class="navbar-brand" href="#">Portfolio</a>
-			</nav>
-		</div>
-	<h1 style="color: black;">hugstar211</h1>
-	<h1 style="color: black;">hugstar212</h1>
-	<h1 style="color: black;">hugstar213</h1>
+</section>
+<!-- hugstar21 -->
+<section id="hugstar21" class="collapse">
+	<!-- eunpronav -->
+	<div id="eunpronav" class="pronav">
+		<nav class="navbar navbar-light">
+			<a class="navbar-brand" href="javascript:href('home')">Home</a>
+			<a class="navbar-brand" href="javascript:href('About')">About</a>
+			<a class="navbar-brand" href="#">Portfolio</a>
+		</nav>
+	</div>
+	<!-- about -->
+	<div>
+		<h1 style="color: black;">hugstar211</h1>
+		<h1 style="color: black;">hugstar212</h1>
+		<h1 style="color: black;">hugstar213</h1>
+	</div>
+	
 	<h1 style="color: black;">hugstar214</h1>
 	<h1 style="color: black;">hugstar215</h1>
 	<h1 style="color: black;">hugstar216</h1>
@@ -170,17 +187,17 @@ $(document).ready(function(){
 	<h1 style="color: black;">hugstar228</h1>
 	<h1 style="color: black;">hugstar229</h1>
 	<h1 style="color: black;">hugstar230</h1>
-	</div>
+</section>
 	
-	<div id="JinwooKing" class="collapse">
+<section id="JinwooKing" class="collapse">
 		<div id="jinpronav" class="pronav">
 		  <nav class="navbar navbar-light">
-			<a class="navbar-brand" href="#">Home</a>
-			<a class="navbar-brand" href="#">About</a>
+			<a class="navbar-brand" href="javascript:href('home')">Home</a>
+			<a class="navbar-brand" href="javascript:href('About')">About</a>
 			<a class="navbar-brand" href="#">Portfolio</a>
 		  </nav>
 		</div>
 	<h1 style="color: black;">JinwooKing</h1>	
-	</div>
+</section>
 </body>
 </html>
