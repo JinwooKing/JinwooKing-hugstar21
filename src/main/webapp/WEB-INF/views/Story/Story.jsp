@@ -6,7 +6,7 @@
 </head>
 <body>
 <div style="height: 1000px;">
-<h1>main</h1>
+<h1>Story</h1>
 </div>
 </body>
 </html>
