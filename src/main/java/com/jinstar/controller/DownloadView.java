@@ -16,9 +16,9 @@ public class DownloadView extends AbstractView{
 
 	public DownloadView() {
 		setContentType("application/octet-stream");
-		
 		/*다운받아주는 화면단에 대한 정보*/
 	}
+	
 	@Override
 	protected void renderMergedOutputModel(Map<String, Object> map, HttpServletRequest requset, HttpServletResponse response)
 			throws Exception {
