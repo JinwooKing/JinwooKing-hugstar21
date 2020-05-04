@@ -24,7 +24,7 @@
       </property>
    </bean>
 	<context:property-placeholder location="classpath:db.properties" />
-		
+ 		
 	<bean name="dbconf" class="com.zaxxer.hikari.HikariConfig">
 
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
