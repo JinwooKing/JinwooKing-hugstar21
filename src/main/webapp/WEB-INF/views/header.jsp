@@ -120,7 +120,7 @@ header{
 }
 
 /* The progress bar (scroll indicator) */
-.progress-bar {
+.prgbar {
   height: 8px;
   background: #dceffb;
   width: 0%;
@@ -213,7 +213,7 @@ $(document).ready(function(){
 	
 	<!--  progress bar -->
 	<div class="progress-container">
-    	<div class="progress-bar" id="prBar"></div>
+    	<div class="progress-bar prgbar" id="prBar"></div>
   	</div>  	
   	
   	<!-- mobile nav link -->
