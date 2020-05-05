@@ -84,14 +84,14 @@ h1{
 }
 
 /* about */
-.about, .portfolio{
+.about, .portfolio, .contact{
 	padding: 64px 16px;
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
     color: #777;
 }
-.about h2, .portfolio h2{
+.about h2, .portfolio h2, .contact h2{
 	text-align: center;
 	font-family: "Lato", sans-serif;
 	font-weight: bold;
@@ -99,11 +99,11 @@ h1{
 	color: #444649;
 	
 }
-.about p, .portfolio p{
+.about p, .portfolio p, .contact p{
 	font-family: "Lato", sans-serif;
 	font-size: 15px;
 }
-.about .p, .portfolio .p{
+.about .p, .portfolio .p, .contact .p{
 	text-align: center;
 	margin: 15px 0px;
 }
@@ -198,12 +198,41 @@ h1{
 	background-color: #616161!important;
 	animation: flipInX 0.75s ease both;
 }
-.back_1{
+.background_portfolio{
 	background-color: #F5F5F5;
 }
-.portfolio p{
+.portfolio p, .contact p{
 	text-align: center;
 }
+.contact_form{
+	text-align: center;
+	margin: 0px auto;
+	width: 800px;
+}
+input[type=text], input[type=email], textarea{
+	padding: 10px 15px;
+	margin: 10px 0;
+	display: block;
+    width: 100%;
+    border: 1px solid silver;
+    border-radius: 3px;
+}
+.contact button{	
+	padding: 10px 30px;
+	background-color: white;
+	border: 1px solid silver;
+    border-radius: 5px;
+    color: #616161;
+    transition: all 0.5s;
+}
+.contact_form button{
+	float: right;
+}
+.contact button:hover {
+	background-color: gray;
+	color: white;
+}
+
 @media all and (max-width:960px){
 .about_column{
 	width: 100%
@@ -211,11 +240,13 @@ h1{
 .pronav a{
 	padding: 9px 22px;
 }
-.about h2, .portfolio h2{
+.about h2, .portfolio h2, .contact h2{
 	margin: 20px 0px;
 }
+.contact_form{
+	width: 90%;
 }
-
+}
 @media all and (max-width:390px){
 .pronav a{
 	padding: 9px 11px;
@@ -225,6 +256,19 @@ h1{
 </style>
 <script>
 $(document).ready(function(){
+	
+	$(window).resize(function(){
+		set_homebtn();
+	})
+	// home btn
+	$('.footer_sec').prepend("<div class='homebtn' style='background-color: rgb(194, 202, 249); position:absolute; display:none; top: -20px; padding: 8px; cursor: pointer;'>"+
+								"<i class='material-icons' onclick=javascript:href('home') style='color:white'>arrow_upward</i></div>");
+	function set_homebtn(){
+		let homebtnleft = $('body')[0].clientWidth/2 - 20;
+		$('.homebtn')[0].style.left=homebtnleft+"px";	
+	}
+	set_homebtn();
+	// end home btn
 	
 	// profile nav sticky
 	let h = $('.home_column')[0].clientHeight;
@@ -244,14 +288,17 @@ $(document).ready(function(){
 	//end profile nav sticky	
 
 	// hugstar21클릭
-	$(".left").click(function(){		
+	$(".left").click(function(){	
 		if($(".right").css("width")==="0px"){
 			$(".left").css("width","50%");
 			$(".right").css({"width":"50%","display":"block"});
+			$('.homebtn').css("display","none");
 		}else{
 		$(".left").css("width","100%");
 		$(".right").css("width","0%")
-		setTimeout(() => {$(".right").css("display","none")}, 300);
+		setTimeout(() => {$(".right").css("display","none")
+						  $('.homebtn').css("display","inline-block");	
+							}, 300);
 		$('html').animate({scrollTop : h}, 400);
 		}; 
 	})
@@ -260,9 +307,11 @@ $(document).ready(function(){
 		if($(".left").css("width")==="0px"){
 			$(".left").css("width","50%");
 			$(".right").css("width","50%");
+			$('.homebtn').css("display","none");
 		}else{
 		$(".right").css("width","100%");
 		$(".left").css("width","0%");
+		setTimeout(() => {$('.homebtn').css("display","inline-block");}, 300);
 		$('html').animate({scrollTop : h}, 400);
 		}
 	})
@@ -287,6 +336,9 @@ function href(text){
 		$('html').animate({scrollTop : h}, 200);
 	}else if(text==="Portfolio"){
 		let h = $('.portfolio')[0].offsetTop-navh;
+		$('html').animate({scrollTop : h}, 200);
+	}else if(text==="Contact"){
+		let h = $('.contact')[0].offsetTop-navh;
 		$('html').animate({scrollTop : h}, 200);
 	}
 }
@@ -317,7 +369,7 @@ function href(text){
 			<a class="navbar-brand" href="javascript:href('home')">Home</a>
 			<a class="navbar-brand" href="javascript:href('About')">About</a>
 			<a class="navbar-brand" href="javascript:href('Portfolio')">Portfolio</a>
-			<a class="navbar-brand" href="#">Contact</a>
+			<a class="navbar-brand" href="javascript:href('Contact')">Contact</a>
 		</nav>
 	</div>
 	<!-- about -->
@@ -415,48 +467,31 @@ function href(text){
 			    </div>
 		    </div>
 	</div>
-	<div class="back_1">
+	
+	<!-- portfolio -->
+	<div class="background_portfolio">
 	<div class="portfolio">
 	<h2>PORTFOLIO</h2>
 	<p class="p mb-3">My WorK</p>
 		<p>Here are some of my latest lorem work ipsum tipsum. Click on the images to make them bigger</p>
 	</div>
 	</div>
-	<h1 style="color: black;">hugstar219</h1>
-	<h1 style="color: black;">hugstar220</h1>
-	<h1 style="color: black;">hugstar221</h1>
-	<h1 style="color: black;">hugstar222</h1>
-	<h1 style="color: black;">hugstar223</h1>
-	<h1 style="color: black;">hugstar224</h1>
-	<h1 style="color: black;">hugstar225</h1>
-	<h1 style="color: black;">hugstar226</h1>
-	<h1 style="color: black;">hugstar227</h1>
-	<h1 style="color: black;">hugstar228</h1>
-	<h1 style="color: black;">hugstar229</h1>
-	<h1 style="color: black;">hugstar230</h1>
-	<h1 style="color: black;">hugstar211</h1>
-	<h1 style="color: black;">hugstar212</h1>
-	<h1 style="color: black;">hugstar213</h1>
-	<h1 style="color: black;">hugstar214</h1>
-	<h1 style="color: black;">hugstar215</h1>
-	<h1 style="color: black;">hugstar216</h1>
-	<h1 style="color: black;">hugstar217</h1>
-	<h1 style="color: black;">hugstar218</h1>
-	<h1 style="color: black;">hugstar219</h1>
-	<h1 style="color: black;">hugstar220</h1>
-	<h1 style="color: black;">hugstar221</h1>
-	<h1 style="color: black;">hugstar222</h1>
-	<h1 style="color: black;">hugstar223</h1>
-	<h1 style="color: black;">hugstar224</h1>
-	<h1 style="color: black;">hugstar225</h1>
-	<h1 style="color: black;">hugstar226</h1>
-	<h1 style="color: black;">hugstar227</h1>
-	<h1 style="color: black;">hugstar228</h1>
-	<h1 style="color: black;">hugstar229</h1>
-	<h1 style="color: black;">hugstar230</h1>
+	
+	<!-- contact -->
+	<svg preserveAspectRatio="none" viewBox="0 0 100 102" height="75" width="100%">
+          <path d="M0 0 L50 100 L100 0 Z" fill="#F5F5F5" stroke="white"></path>
+        </svg>
+	<div class="contact mb-5">
+	<h2>CONTACT</h2>
+	<p class="p mb-5">Have a question or want to work together?</p>
+		<form action="javascript:sendemail()" class="contact_form mb-5">
+			<input type="text" name="name" placeholder="이름" required="required">
+			<input type="email" name="email" placeholder="이메일" required="required">
+			<textarea style="min-height: 200px" name="message" placeholder="메시지"></textarea>
+			<button type="submit" class="mt-1 mb-5">SUBMIT</button>
+		</form>
+	</div>
 </section>
-
-
 
 <!-- JinwooKing -->
 <section id="JinwooKing" class="collapse">

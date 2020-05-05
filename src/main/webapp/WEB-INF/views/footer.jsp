@@ -29,7 +29,7 @@ footer {
 </style>
 </head>
 <body>
-<div class="footer_sec">
+<div class="footer_sec ">
 <p class="copyright">Copyright © JINSTAR Corp. All Rights Reserved.</p>
 </div> 
 </body>

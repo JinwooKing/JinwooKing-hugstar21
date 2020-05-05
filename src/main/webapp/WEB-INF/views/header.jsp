@@ -116,12 +116,12 @@ header{
 .progress-container {
   padding-top: 68px;
   width: 100%;
-  height: 8px;
+  height: 4px;
 }
 
 /* The progress bar (scroll indicator) */
 .prgbar {
-  height: 8px;
+  height: 4px;
   background: #dceffb;
   width: 0%;
 }
