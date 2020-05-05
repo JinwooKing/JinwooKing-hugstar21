@@ -69,7 +69,7 @@ h1{
   float: left;
   color: #f2f2f2;
   text-decoration: none;
-  padding: 9px 33px;
+  padding: 9px 44px;
 }
 .row{
 	margin-right: 0px;
@@ -84,24 +84,26 @@ h1{
 }
 
 /* about */
-.about{
+.about, .portfolio{
 	padding: 64px 16px;
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
     color: #777;
 }
-.about h2{
+.about h2, .portfolio h2{
 	text-align: center;
 	font-family: "Lato", sans-serif;
+	font-weight: bold;
 	margin: 30px 0px;
 	color: #444649;
+	
 }
-.about p{
+.about p, .portfolio p{
 	font-family: "Lato", sans-serif;
 	font-size: 15px;
 }
-.about .p{
+.about .p, .portfolio .p{
 	text-align: center;
 	margin: 15px 0px;
 }
@@ -192,15 +194,32 @@ h1{
 	height: 25px;
 	font-weight: bold;
 }
-
 .progress_good div{
 	background-color: #616161!important;
 	animation: flipInX 0.75s ease both;
 }
-
+.back_1{
+	background-color: #F5F5F5;
+}
+.portfolio p{
+	text-align: center;
+}
 @media all and (max-width:960px){
 .about_column{
 	width: 100%
+}
+.pronav a{
+	padding: 9px 22px;
+}
+.about h2, .portfolio h2{
+	margin: 20px 0px;
+}
+}
+
+@media all and (max-width:390px){
+.pronav a{
+	padding: 9px 11px;
+	font-size: 14px;
 }
 }
 </style>
@@ -309,7 +328,7 @@ function href(text){
 	    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
 	    qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
 	       진우는 은별이를 좋아해</p>
-	        <div class="row">
+	        <div class="row mt-5 mb-3">
 	       		<div class="row about_column px-1">
 	       			<div class="about_column_info px-3">
 	       				<div class="hex-wrap">
@@ -396,8 +415,12 @@ function href(text){
 			    </div>
 		    </div>
 	</div>
+	<div class="back_1">
 	<div class="portfolio">
-	portfolio
+	<h2>PORTFOLIO</h2>
+	<p class="p mb-3">My WorK</p>
+		<p>Here are some of my latest lorem work ipsum tipsum. Click on the images to make them bigger</p>
+	</div>
 	</div>
 	<h1 style="color: black;">hugstar219</h1>
 	<h1 style="color: black;">hugstar220</h1>
