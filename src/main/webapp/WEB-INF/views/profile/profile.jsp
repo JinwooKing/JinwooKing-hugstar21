@@ -128,7 +128,7 @@ h1{
     height: 100px;
 }
 .hexagon {
-    background-color: #777;
+    background-color: #91D8FA;
     display: inline-block;
     height: 100%;
     width: calc(100% * 0.57735);
@@ -193,9 +193,10 @@ h1{
 .progress_good{
 	height: 25px;
 	font-weight: bold;
+	background-color: #CDECFA;
 }
 .progress_good div{
-	background-color: #616161!important;
+	background-color: #46B8FF!important;
 	animation: flipInX 0.75s ease both;
 }
 .background_portfolio{
@@ -320,13 +321,20 @@ $(document).ready(function(){
 function href(text){
 	// href 변수
 	let navh = 0;
-	
 	// pronavbar에 sticky 효과가 부여되면  
 	if($('.sticky').length>0){
-		navh = $('.pronav')[0].clientHeight+$('.pronav')[0].offsetTop; // top에 fix된 네비바 길이
+		if(text==="JPortfolio" || text==="JContact"){
+			navh = $('.pronav')[0].clientHeight+$('.pronav')[1].offsetTop; // top에 fix된 네비바 길이
+		}else{
+			navh = $('.pronav')[0].clientHeight+$('.pronav')[0].offsetTop; 	
+		}
 	}else{
-	// sticky 효과 없으면 
-		navh = 2*$('.pronav')[0].offsetHeight+$('.navdiv')[0].clientHeight; // 부여될 fix pronav 값까지 더해서 구해준다. (2배)
+	// sticky 효과 없으면
+		if(text==="JPortfolio" || text==="JContact"){
+			navh = $('.navdiv')[0].clientHeight+2*$('.pronav')[1].offsetHeight; // 부여될 fix pronav 값까지 더해서 구해준다. (2배)
+		}else{
+			navh = $('.navdiv')[0].clientHeight+2*$('.pronav')[0].offsetHeight;	
+		}	
 	}
 	// end href 변수
 	if(text==="home"){
@@ -340,7 +348,23 @@ function href(text){
 	}else if(text==="Contact"){
 		let h = $('.contact')[0].offsetTop-navh;
 		$('html').animate({scrollTop : h}, 200);
+		// Jinwoo navbar
+	}else if(text==="JPortfolio"){
+		let h = $('.portfolio')[1].offsetTop-navh;
+		$('html').animate({scrollTop : h}, 200);
+	}else if(text==="JContact"){
+		let h = $('.contact')[1].offsetTop-navh;
+		$('html').animate({scrollTop : h}, 200);
 	}
+}
+// 메일전송
+function sendemail(text){
+	console.log(document.forms[text]);
+	console.log(document.forms[text]["name"]);
+	console.log(document.forms[text]["name"].value);
+	$('[name='+text+']').find('button').before('<div class="alert alert-info alert-dismissible fade in" style="opacity:1">'+
+					'<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+
+		    		'<strong>Success!</strong> Mail sending success.</div>');
 }
 </script>
 </head>
@@ -378,8 +402,7 @@ function href(text){
 		<p class="p mb-3">I love eunbori 은별하트진우</p>
 		<p>We have created a fictional "personal" website/blog, and our fictional character is a hobby photographer. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 	    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-	    qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-	       진우는 은별이를 좋아해</p>
+	    qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
 	        <div class="row mt-5 mb-3">
 	       		<div class="row about_column px-1">
 	       			<div class="about_column_info px-3">
@@ -484,12 +507,13 @@ function href(text){
 	<div class="contact mb-5">
 	<h2>CONTACT</h2>
 	<p class="p mb-5">Have a question or want to work together?</p>
-		<form action="javascript:sendemail()" class="contact_form mb-5">
+		<form action="javascript:sendemail('EunboriForm')" class="contact_form mb-5" name="EunboriForm">
 			<input type="text" name="name" placeholder="이름" required="required">
 			<input type="email" name="email" placeholder="이메일" required="required">
-			<textarea style="min-height: 200px" name="message" placeholder="메시지"></textarea>
+			<textarea style="min-height: 200px" name="message" placeholder="메시지" required="required"></textarea>
 			<button type="submit" class="mt-1 mb-5">SUBMIT</button>
 		</form>
+		
 	</div>
 </section>
 
@@ -500,80 +524,129 @@ function href(text){
 		  <nav class="navbar navbar-light">
 			<a class="navbar-brand" href="javascript:href('home')">Home</a>
 			<a class="navbar-brand" href="javascript:href('About')">About</a>
-			<a class="navbar-brand" href="#">Portfolio</a>
+			<a class="navbar-brand" href="javascript:href('JPortfolio')">Portfolio</a>
+			<a class="navbar-brand" href="javascript:href('JContact')">Contact</a>
 		  </nav>
 		</div>
 		
 	<!-- about -->
 	<div class="about">
-		<h2>ABOUT</h2>
-		<p class="p">I love eunbori 은별하트진우</p>
+		<h2>ABOUT ME</h2>
+		<p class="p mb-3">I love eunbori 은별하트진우</p>
 		<p>We have created a fictional "personal" website/blog, and our fictional character is a hobby photographer. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 	    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-	    qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-	       진우는 은별이를 좋아해</p>
+	    qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+	        <div class="row mt-5 mb-3">
+	       		<div class="row about_column px-1">
+	       			<div class="about_column_info px-3">
+	       				<div class="hex-wrap">
+	       					<div class="hexagon">
+	       						<i class="material-icons">favorite</i>
+	       					</div>
+	       				</div>
+	       				<div class="about_info">
+	       					<p class="info_label">애기천사<p>
+	       					<p>따듯한 마음을 가지고 있다.<p>
+	       					</div>
+	       			</div>
+			      	<div class="about_column_info px-3">
+	       				<div class="hex-wrap">
+	       					<div class="hexagon">
+	       						<i class="material-icons">trending_up</i>
+	       					</div>
+	       				</div>
+	       				<div class="about_info">
+	       					<p class="info_label">상승세<p>
+	       					<p>잘하고 있다.<p>
+       					</div>
+       				</div>
+	       		</div>
+	       		<div class="row about_column px-1">
+			      	<div class="about_column_info px-3">
+	       				<div class="hex-wrap">
+	       					<div class="hexagon">
+	       						<i class="material-icons">whatshot</i>
+	       					</div>
+	       				</div>
+	       				<div class="about_info">
+	       					<p class="info_label">노력쟁이<p>
+	       					<p>매사 열심히 노력함<p>
+      					</div>
+   					</div>
+			      	<div class="about_column_info px-3">
+	       				<div class="hex-wrap">
+	       					<div class="hexagon">
+	       						<i class="material-icons">thumb_up</i>
+	       					</div>
+	       				</div>
+	       				<div class="about_info">
+	       					<p class="info_label">인기<p>
+	       					<p>지덕체 다 가지고 있다. 팔망미인<p>
+      					</div>
+   					</div>
+	       		</div>
+	        </div>
 		    <div class="row">
-		    	<div class="about_column">
+		   		<div class="about_column about_img_container">
+		    	<!-- img -->	
 		    		<p class="p"><span><i class="material-icons mr-2">person</i>박진우</span></p>
-		    		<img alt="jinwoo" src="${pageContext.request.contextPath}/resources/img/jinwoo/JinwooKing.jpg">
+		    		<img alt="eunbori" src="${pageContext.request.contextPath}/resources/img/jinwoo/JinwooKing.jpg">
+		    		<p class="mt-3">I'm a Front-End Developer for 서울 in 대한민국, CA. I have serious passion for UI effects, animations and creating intuitive, dynamic user experiences. Let's make something special.</p>
 		    	</div>
 		    	<div class="about_column">
-			    	<p class="p pt-5">Welcome to my website. I am lorem ipsum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-				    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor
-				    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			    	<!-- skils -->
+			      	<p class="p"><i class="material-icons mr-2">edit</i>Skils</p>
+			      	<p class="wide mt-3">Java</p>
+			      	<div class="progress progress_good">
+			  			<div class="progress-bar" style="width:100%">100%</div>
+					</div>
+					<p class="wide mt-3">HTML</p>
+			      	<div class="progress progress_good">
+			  			<div class="progress-bar" style="width:85%">85%</div>
+					</div>
+					<p class="wide mt-3">CSS</p>
+			      	<div class="progress progress_good">
+			  			<div class="progress-bar" style="width:80%">80%</div>
+					</div>
+					<p class="wide mt-3">JvavScript</p>
+			      	<div class="progress progress_good">
+			  			<div class="progress-bar" style="width:90%">90%</div>
+					</div>
+					<p class="wide mt-3">SQL</p>
+			      	<div class="progress progress_good">
+			  			<div class="progress-bar" style="width:95%">95%</div>
+					</div>
+					<p class="wide mt-3">SPRING</p>
+			      	<div class="progress progress_good">
+			  			<div class="progress-bar" style="width:85%">85%</div>
+					</div>
 			    </div>
 		    </div>
-		<!-- 잘하는것 -->
-      	<p class="p py-4" style="font-size: 18px; font-weight: bold;">Im really good at:</p>
-      	<p class="wide mt-3"><i class="material-icons mr-3">computer</i>은별사랑</p>
-      	<div class="progress progress_good">
-  			<div class="progress-bar bg-secondary" style="width:100%">100%</div>
-		</div>
-		<p class="wide mt-3"><i class="material-icons mr-3">computer</i>Web Design</p>
-      	<div class="progress progress_good">
-  			<div class="progress-bar bg-secondary" style="width:90%">90%</div>
-		</div>
-		<p class="wide mt-3"><i class="material-icons mr-3">computer</i>Web Design</p>
-      	<div class="progress progress_good">
-  			<div class="progress-bar bg-secondary" style="width:90%">90%</div>
-		</div>
-		<p class="wide mt-3"><i class="material-icons mr-3">computer</i>Web Design</p>
-      	<div class="progress progress_good">
-  			<div class="progress-bar bg-secondary" style="width:90%">90%</div>
-		</div>
 	</div>
-	<h1 style="color: black;">JinwooKing</h1>
-	<h1 style="color: black;">JinwooKing</h1>
-	<h1 style="color: black;">JinwooKing</h1>
-	<h1 style="color: black;">JinwooKing</h1>
-	<h1 style="color: black;">JinwooKing</h1>
-	<h1 style="color: black;">JinwooKing</h1>
-	<h1 style="color: black;">JinwooKing</h1>
-	<h1 style="color: black;">JinwooKing</h1>
-	<h1 style="color: black;">JinwooKing</h1>
-	<h1 style="color: black;">JinwooKing</h1>
-	<h1 style="color: black;">JinwooKing</h1>
-	<h1 style="color: black;">JinwooKing</h1>
-	<h1 style="color: black;">JinwooKing</h1>
-	<h1 style="color: black;">JinwooKing</h1>	
-	<h1 style="color: black;">JinwooKing</h1>
-	<h1 style="color: black;">JinwooKing</h1>
-	<h1 style="color: black;">JinwooKing</h1>
-	<h1 style="color: black;">JinwooKing</h1>
-	<h1 style="color: black;">JinwooKing</h1>
-	<h1 style="color: black;">JinwooKing</h1>
-	<h1 style="color: black;">JinwooKing</h1>
-	<h1 style="color: black;">JinwooKing</h1>
-	<h1 style="color: black;">JinwooKing</h1>
-	<h1 style="color: black;">JinwooKing</h1>
-	<h1 style="color: black;">JinwooKing</h1>
-	<h1 style="color: black;">JinwooKing</h1>
-	<h1 style="color: black;">JinwooKing</h1>
-	<h1 style="color: black;">JinwooKing</h1>
-	<h1 style="color: black;">JinwooKing</h1>
-	<h1 style="color: black;">JinwooKing</h1>
-	<h1 style="color: black;">JinwooKing</h1>
-	<h1 style="color: black;">JinwooKing</h1>
+	
+	<!-- portfolio -->
+	<div class="background_portfolio">
+	<div class="portfolio">
+	<h2>PORTFOLIO</h2>
+	<p class="p mb-3">My WorK</p>
+		<p>Here are some of my latest lorem work ipsum tipsum. Click on the images to make them bigger</p>
+	</div>
+	</div>
+	
+	<!-- contact -->
+	<svg preserveAspectRatio="none" viewBox="0 0 100 102" height="75" width="100%">
+          <path d="M0 0 L50 100 L100 0 Z" fill="#F5F5F5" stroke="white"></path>
+        </svg>
+	<div class="contact mb-5">
+	<h2>CONTACT</h2>
+	<p class="p mb-5">Have a question or want to work together?</p>
+		<form action="javascript:sendemail('JinwooForm')" class="contact_form mb-5" name="JinwooForm">
+			<input type="text" name="name" placeholder="이름" required="required">
+			<input type="email" name="email" placeholder="이메일" required="required">
+			<textarea style="min-height: 200px" name="message" placeholder="메시지" required="required"></textarea>
+			<button type="submit" class="mt-1 mb-5">SUBMIT</button>
+		</form>
+	</div>
 </section>
 </body>
 </html>
