@@ -82,7 +82,6 @@ h1{
   width: 100%;
   z-index: 1;
 }
-
 /* about */
 .about, .portfolio, .contact{
 	padding: 64px 16px;
@@ -97,7 +96,6 @@ h1{
 	font-weight: bold;
 	margin: 30px 0px;
 	color: #444649;
-	
 }
 .about p, .portfolio p, .contact p{
 	font-family: "Lato", sans-serif;
@@ -218,19 +216,22 @@ input[type=text], input[type=email], textarea{
     border: 1px solid silver;
     border-radius: 3px;
 }
+/* contact */
 .contact button{	
 	padding: 10px 30px;
-	background-color: white;
-	border: 1px solid silver;
+	background-color: rgb(194, 202, 249);
+	border: 1px solid rgb(194, 202, 249);
     border-radius: 5px;
-    color: #616161;
+    color: white;
+    font-weight: bold;
     transition: all 0.5s;
 }
 .contact_form button{
 	float: right;
 }
 .contact button:hover {
-	background-color: gray;
+	background-color: #d1ecf1;
+	border: 1px solid #d1ecf1;
 	color: white;
 }
 
@@ -248,6 +249,7 @@ input[type=text], input[type=email], textarea{
 	width: 90%;
 }
 }
+
 @media all and (max-width:390px){
 .pronav a{
 	padding: 9px 11px;
@@ -359,12 +361,35 @@ function href(text){
 }
 // 메일전송
 function sendemail(text){
-	console.log(document.forms[text]);
-	console.log(document.forms[text]["name"]);
-	console.log(document.forms[text]["name"].value);
-	$('[name='+text+']').find('button').before('<div class="alert alert-info alert-dismissible fade in" style="opacity:1">'+
+
+	let name = 	document.forms[text]["name"].value;
+	let email = document.forms[text]["email"].value;
+	let message = document.forms[text]["message"].value;
+	let To = "";
+	if(text==="JinwooForm"){
+		To = "wlsdn9489@naver.com";
+	}else{
+		To = "hugstar21@gmail.com";
+	}
+	$.ajax({
+		url : "${pageContext.request.contextPath}/sendMail"
+		,data : {"name" : name, "email" : email, "message" : message, "To" : To} 
+		,dataType : "text"
+		,async: false
+		,success:function(data){
+			console.log(data);
+			$('[name='+text+']').find('button').before('<div class="alert alert-info alert-dismissible fade in" style="opacity:1">'+
 					'<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+
 		    		'<strong>Success!</strong> Mail sending success.</div>');
+		}
+		,error:function(e){
+			console.log(e);
+		}
+	});
+	
+	
+	
+	
 }
 </script>
 </head>

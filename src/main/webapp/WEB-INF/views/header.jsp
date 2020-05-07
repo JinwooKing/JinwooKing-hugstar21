@@ -192,9 +192,9 @@ $(document).ready(function(){
 	  </a>
 	  
 	  <!--  pcnav link -->
-	  <a class="navbar-brand pcnav" href="profile">Profile</a>
-	  <a class="navbar-brand pcnav" href="Story">Story</a>
-	  <a class="navbar-brand pcnav" href="Board">Board</a>
+	  <a class="navbar-brand pcnav" href="${pageContext.request.contextPath}/profile">Profile</a>
+	  <a class="navbar-brand pcnav" href="${pageContext.request.contextPath}/Story">Story</a>
+	  <a class="navbar-brand pcnav" href="${pageContext.request.contextPath}/Board">Board</a>
 	  <!-- <a class="navbar-brand pcnav" href="About">About</a> -->
 	  
 	  <!--  pcnav search -->
@@ -219,9 +219,9 @@ $(document).ready(function(){
   	<!-- mobile nav link -->
 	<div class="togglenav">
 		<ul class="list-group list-group-flush">
-		  <li class="list-group-item"><a href="profile">Profile</a></li>
-		  <li class="list-group-item"><a href="Story">Story</a></li>
-		  <li class="list-group-item"><a href="Board">Board</a></li>
+		  <li class="list-group-item"><a href="${pageContext.request.contextPath}/profile">Profile</a></li>
+		  <li class="list-group-item"><a href="${pageContext.request.contextPath}/Story">Story</a></li>
+		  <li class="list-group-item"><a href="${pageContext.request.contextPath}/Board">Board</a></li>
 		  <!-- <li class="list-group-item"><a href="About">About</a></li> -->
 		</ul>
 	</div>
