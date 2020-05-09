@@ -10,7 +10,6 @@ import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
@@ -18,7 +17,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -64,18 +62,6 @@ public class HomeController {
 	@RequestMapping("/sendMail")
 	@ResponseBody
 	public void sendMail(@RequestParam HashMap<String, Object> Mail) {
-		//감사인사
-		final MimeMessagePreparator Preparator = new MimeMessagePreparator(){ 
-			@Override
-			public void prepare(MimeMessage mimeMessage) throws Exception {
-				final MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
-				helper.setFrom("wlsdn9489@naver.com");
-				helper.setTo((String)Mail.get("email"));
-				helper.setSubject("[JinStar] 메일이 송부되었습니다. 감사합니다.");
-				helper.setText("");
-			}
-		};
-		mailSender.send(Preparator);
 		//우리에게 전송
 		final MimeMessagePreparator WePreparator = new MimeMessagePreparator(){ 
 			@Override
@@ -88,6 +74,18 @@ public class HomeController {
 			}
 		};
 		mailSender.send(WePreparator);
+		//감사인사
+		final MimeMessagePreparator Preparator = new MimeMessagePreparator(){ 
+			@Override
+			public void prepare(MimeMessage mimeMessage) throws Exception {
+				final MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
+				helper.setFrom("wlsdn9489@naver.com");
+				helper.setTo((String)Mail.get("email"));
+				helper.setSubject("[JinStar] 메일이 송부되었습니다. 감사합니다.");
+				helper.setText("");
+			}
+		};
+		mailSender.send(Preparator);
 	} 
 	
 	@RequestMapping("/download/{file_format}/{file_name}")

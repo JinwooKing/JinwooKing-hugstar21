@@ -80,7 +80,7 @@ h1{
   position: fixed;
   top: 68px;
   width: 100%;
-  z-index: 1;
+  z-index: 100;
 }
 /* about */
 .about, .portfolio, .contact{
@@ -203,6 +203,13 @@ h1{
 .portfolio p, .contact p{
 	text-align: center;
 }
+.portfolio_third{
+	width: 33.333333%;
+	float: left;
+}
+.portfolio_third img{
+	
+}
 .contact_form{
 	text-align: center;
 	margin: 0px auto;
@@ -215,6 +222,7 @@ input[type=text], input[type=email], textarea{
     width: 100%;
     border: 1px solid silver;
     border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.2);
 }
 /* contact */
 .contact button{	
@@ -225,6 +233,7 @@ input[type=text], input[type=email], textarea{
     color: white;
     font-weight: bold;
     transition: all 0.5s;
+    box-shadow: 0 1px 3px rgba(0,0,0,.4);
 }
 .contact_form button{
 	float: right;
@@ -232,6 +241,7 @@ input[type=text], input[type=email], textarea{
 .contact button:hover {
 	background-color: #d1ecf1;
 	border: 1px solid #d1ecf1;
+	
 	color: white;
 }
 
@@ -248,12 +258,17 @@ input[type=text], input[type=email], textarea{
 .contact_form{
 	width: 90%;
 }
+.portfolio_third{
+	width: 50%;
 }
-
-@media all and (max-width:390px){
+}
+@media all and (max-width:500px){
 .pronav a{
 	padding: 9px 11px;
 	font-size: 14px;
+}
+.portfolio_third{
+	width: 100%;
 }
 }
 </style>
@@ -264,7 +279,7 @@ $(document).ready(function(){
 		set_homebtn();
 	})
 	// home btn
-	$('.footer_sec').prepend("<div class='homebtn' style='background-color: rgb(194, 202, 249); position:absolute; display:none; top: -20px; padding: 8px; cursor: pointer;'>"+
+	$('.footer_sec').prepend("<div class='homebtn' style='background-color: rgb(194, 202, 249); position:absolute; display:none; top: -20px; padding: 8px; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,.4);'>"+
 								"<i class='material-icons' onclick=javascript:href('home') style='color:white'>arrow_upward</i></div>");
 	function set_homebtn(){
 		let homebtnleft = $('body')[0].clientWidth/2 - 20;
@@ -373,17 +388,20 @@ function sendemail(text){
 	}
 	$.ajax({
 		url : "${pageContext.request.contextPath}/sendMail"
-		,data : {"name" : name, "email" : email, "message" : message, "To" : To} 
+		,data : {name, email, message, To} 
 		,dataType : "text"
 		,async: false
 		,success:function(data){
 			console.log(data);
-			$('[name='+text+']').find('button').before('<div class="alert alert-info alert-dismissible fade in" style="opacity:1">'+
+			$('[name='+text+']').find('button').before('<div class="alert alert-info alert-dismissible" style="opacity:1">'+
 					'<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+
 		    		'<strong>Success!</strong> Mail sending success.</div>');
 		}
 		,error:function(e){
 			console.log(e);
+			$('[name='+text+']').find('button').before('<div class="alert alert-danger alert-dismissible" style="opacity:1">'+
+					'<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+
+		    		'<strong>Failed!</strong> Mail sending failed.</div>');
 		}
 	});
 	
@@ -395,6 +413,33 @@ function sendemail(text){
 </head>
 <body>
 <!-- home -->
+	<!-- modal -->
+	
+	<!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          Modal body..
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <!-- modal -->
 <section style="height: 93vh;">
 	<div class="row">
 	  <div class="home_column left" data-toggle="collapse" data-target="#hugstar21">
@@ -483,7 +528,7 @@ function sendemail(text){
 		    	<!-- img -->	
 		    		<p class="p"><span><i class="material-icons mr-2">person</i>안은별</span></p>
 		    		<img alt="eunbori" src="${pageContext.request.contextPath}/resources/img/eunbori/hugstar21.jpg">
-		    		<p class="mt-3">I'm a Front-End Developer for 용인 in 대한민국, CA. I have serious passion for UI effects, animations and creating intuitive, dynamic user experiences. Let's make something special.</p>
+		    		<p class="mt-3">I'm a Front-End Developer for 용인 in 대한민국. I have serious passion for UI effects, animations and creating intuitive, dynamic user experiences. Let's make something special.</p>
 		    	</div>
 		    	<div class="about_column">
 			    	<!-- skils -->
@@ -522,6 +567,11 @@ function sendemail(text){
 	<h2>PORTFOLIO</h2>
 	<p class="p mb-3">My WorK</p>
 		<p>Here are some of my latest lorem work ipsum tipsum. Click on the images to make them bigger</p>
+		<div class="row">
+			<div class="portfolio_third"><img src="${pageContext.request.contextPath}/resources/img/logo1.png" style="width: 100%"></div>
+			<div class="portfolio_third"><img src="${pageContext.request.contextPath}/resources/img/logo1.png" style="width: 100%"></div>
+			<div class="portfolio_third"><img src="${pageContext.request.contextPath}/resources/img/logo1.png" style="width: 100%"></div>		
+		</div>
 	</div>
 	</div>
 	
@@ -616,7 +666,7 @@ function sendemail(text){
 		    	<!-- img -->	
 		    		<p class="p"><span><i class="material-icons mr-2">person</i>박진우</span></p>
 		    		<img alt="eunbori" src="${pageContext.request.contextPath}/resources/img/jinwoo/JinwooKing.jpg">
-		    		<p class="mt-3">I'm a Front-End Developer for 서울 in 대한민국, CA. I have serious passion for UI effects, animations and creating intuitive, dynamic user experiences. Let's make something special.</p>
+		    		<p class="mt-3">I'm a Front-End Developer for 서울 in 대한민국. I have serious passion for UI effects, animations and creating intuitive, dynamic user experiences. Let's make something special.</p>
 		    	</div>
 		    	<div class="about_column">
 			    	<!-- skils -->
