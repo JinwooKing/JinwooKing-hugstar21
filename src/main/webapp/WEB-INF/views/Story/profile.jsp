@@ -80,28 +80,28 @@ h1{
   position: fixed;
   top: 68px;
   width: 100%;
-  z-index: 2;
+  z-index: 100;
 }
 /* about */
-.about, .project, .contact{
+.about, .portfolio, .contact{
 	padding: 64px 16px;
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
     color: #777;
 }
-.about h2, .project h2, .contact h2{
+.about h2, .portfolio h2, .contact h2{
 	text-align: center;
 	font-family: "Lato", sans-serif;
 	font-weight: bold;
 	margin: 30px 0px;
 	color: #444649;
 }
-.about p, .project p, .contact p{
+.about p, .portfolio p, .contact p{
 	font-family: "Lato", sans-serif;
 	font-size: 15px;
 }
-.about .p, .project .p, .contact .p{
+.about .p, .portfolio .p, .contact .p{
 	text-align: center;
 	margin: 15px 0px;
 }
@@ -197,17 +197,17 @@ h1{
 	background-color: #46B8FF!important;
 	animation: flipInX 0.75s ease both;
 }
-.background_project{
+.background_portfolio{
 	background-color: #F5F5F5;
 }
-.project p, .contact p{
+.portfolio p, .contact p{
 	text-align: center;
 }
-.project_third{
+.portfolio_third{
 	width: 33.333333%;
 	float: left;
 }
-.project_third img{
+.portfolio_third img{
 	
 }
 .contact_form{
@@ -244,111 +244,7 @@ input[type=text], input[type=email], textarea{
 	
 	color: white;
 }
-/* img  */ 
-.overlay {
-  position: absolute;
-  bottom: 0;
-  background: rgb(0, 0, 0);
-  background: rgba(0, 0, 0, 0.5); /* Black see-through */
-  color: #f1f1f1;
-  width: 100%;
-  transition: .5s ease;
-  opacity:0;
-  color: white;
-  font-size: 20px;
-  padding: 20px;
-  text-align: center;
-}
-.imgcontainer {
-  position: relative;
-}
-.imgcontainer:hover .overlay {
-  opacity: 1;
-}
-/* modal */
-.projectmodal {
-  display: none;
-  position: fixed;
-  z-index: 1031;
-  padding-top: 80px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-.project-content {
-  position: relative;
-  background-color: #fefefe;
-  margin: auto;
-  padding: 0;
-  width: 700px;
-}
-.carouselimg{
-  height: 450px;
-  cursor: pointer;
-}
-.info-box {
-    padding: 35px 60px 90px 25px;
-    border-top: 3px solid #1b242f;
-    box-sizing: border-box;
-    color: #444;
-}
-.title {
-    font-size: 22pt;
-    line-height: 30pt;
-}
-.tag {
-    font-size: 11pt !important;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    color: #c0c0c0;
-    display: block;
-    font-size: 8pt;
-    font-weight: 300;
-    padding-bottom: 15px;
-}
-.detail {
-    font-size: 11pt;
-    line-height: 18pt;
-    margin-top: 15px;
-}
-.close {
-    bottom: 25px;
-    color: #bbb;
-    cursor: pointer;
-    font-size: 20pt;
-    font-weight: 800;
-    position: absolute;
-    right: 25px;
-}
-.bottom-left{
-	position: absolute;
-	left: 0px;
-	bottom: 0px;
-	cursor: pointer;
-	color: #fff;
-	background: rgba(0, 0, 0, 0.3);
-	padding: 10px 15px;
-	font-size: 35px;
-    font-weight: 800;
-}
-.bottom-right{
-	position: absolute;
-	right: 0px;
-	bottom: 0px;	
-	cursor: pointer;
-	color: #fff;
-	background: rgba(0, 0, 0, 0.3);
-	padding: 10px 15px;
-	font-size: 35px;
-    font-weight: 800;
-}
-.window {
-    background: #222;
-    overflow: hidden;
-    position: relative;
-}
+
 @media all and (max-width:960px){
 .about_column{
 	width: 100%
@@ -356,13 +252,13 @@ input[type=text], input[type=email], textarea{
 .pronav a{
 	padding: 9px 22px;
 }
-.about h2, .project h2, .contact h2{
+.about h2, .portfolio h2, .contact h2{
 	margin: 20px 0px;
 }
 .contact_form{
 	width: 90%;
 }
-.project_third{
+.portfolio_third{
 	width: 50%;
 }
 }
@@ -371,7 +267,7 @@ input[type=text], input[type=email], textarea{
 	padding: 9px 11px;
 	font-size: 14px;
 }
-.project_third{
+.portfolio_third{
 	width: 100%;
 }
 }
@@ -437,11 +333,6 @@ $(document).ready(function(){
 		$('html').animate({scrollTop : h}, 400);
 		}
 	})
-	
-	// modal 이벤트 전파 막기
-	document.getElementById("project-content").addEventListener("click", function(event){
-			event.stopPropagation();
-		});
 })
 //페이지 내부 이동
 function href(text){
@@ -449,14 +340,14 @@ function href(text){
 	let navh = 0;
 	// pronavbar에 sticky 효과가 부여되면  
 	if($('.sticky').length>0){
-		if(text==="Jproject" || text==="JContact"){
+		if(text==="JPortfolio" || text==="JContact"){
 			navh = $('.pronav')[0].clientHeight+$('.pronav')[1].offsetTop; // top에 fix된 네비바 길이
 		}else{
 			navh = $('.pronav')[0].clientHeight+$('.pronav')[0].offsetTop; 	
 		}
 	}else{
 	// sticky 효과 없으면
-		if(text==="Jproject" || text==="JContact"){
+		if(text==="JPortfolio" || text==="JContact"){
 			navh = $('.navdiv')[0].clientHeight+2*$('.pronav')[1].offsetHeight; // 부여될 fix pronav 값까지 더해서 구해준다. (2배)
 		}else{
 			navh = $('.navdiv')[0].clientHeight+2*$('.pronav')[0].offsetHeight;	
@@ -468,15 +359,15 @@ function href(text){
 	}else if(text==="About"){
 		let h = $('.home_column')[0].clientHeight;
 		$('html').animate({scrollTop : h}, 200);
-	}else if(text==="project"){
-		let h = $('.project')[0].offsetTop-navh;
+	}else if(text==="Portfolio"){
+		let h = $('.portfolio')[0].offsetTop-navh;
 		$('html').animate({scrollTop : h}, 200);
 	}else if(text==="Contact"){
 		let h = $('.contact')[0].offsetTop-navh;
 		$('html').animate({scrollTop : h}, 200);
 		// Jinwoo navbar
-	}else if(text==="Jproject"){
-		let h = $('.project')[1].offsetTop-navh;
+	}else if(text==="JPortfolio"){
+		let h = $('.portfolio')[1].offsetTop-navh;
 		$('html').animate({scrollTop : h}, 200);
 	}else if(text==="JContact"){
 		let h = $('.contact')[1].offsetTop-navh;
@@ -513,84 +404,41 @@ function sendemail(text){
 		    		'<strong>Failed!</strong> Mail sending failed.</div>');
 		}
 	});
+	
+	
+	
+	
 }
-//end 메일전송
-	//modal
-	function openModal(item) {
-	  fillModal(item);
-	  document.getElementById("ProjectModal").style.display = "block";
-	}
-	
-	function closeModal() {
-	  document.getElementById("ProjectModal").style.display = "none";
-	}
-	
-	var modalText = {
-			ejumptocoding : {
-				title : 'Jump To Coding',
-				tag : '반응형‘종합학습사이트’',
-				detail : ' 언어소개담당'
-			},
-			eloling : {
-				title : 'LOLING',
-				tag : ' 폐쇄형‘게임정보공유커뮤니티’',
-				detail : ' 대회갤린더게시판 담당 '
-			},
-			esbbj : {
-				title : 'SBBJ',
-				tag : ' 관리자, 판매자, 구매자 ‘3계층 오픈마켓’',
-				detail : ' 상품상세보기·장바구니·고객센터·FAQ·서버/DB 구축관리 담당'
-			},
-			jjumptocoding : {
-				title : 'Jump To Coding',
-				tag : '반응형‘종합학습사이트’',
-				detail : ' 메인담당'
-			},
-			jloling : {
-				title : 'LOLING',
-				tag : ' 폐쇄형‘게임정보공유커뮤니티’',
-				detail : ' 조장·회원가입·원딜게시판·DB 구축관리 담당'
-			},
-			jsbbj : {
-				title : 'SBBJ',
-				tag : ' 관리자, 판매자, 구매자 ‘3계층 오픈마켓’',
-				detail : ' 회원가입·로그인·상품리스트·리뷰·관리자페이지·서버 구축관리 담당'
-			}
-	}
-	
-	function fillModal(item) {
-	    $('#project-content .title').text(modalText[item].title);
-	    $('#project-content .detail').text(modalText[item].detail);
-	    $('#project-content .tag').text(modalText[item].tag);
-	    $('#carousel').css({
-	        background:
-	            "url('${pageContext.request.contextPath}/resources/img/carousel/"+item+".png') center center/cover",
-	          backgroundSize: 'cover'
-	        });
-	}
 </script>
 </head>
 <body>
 <!-- home -->
 	<!-- modal -->
-	<div id="ProjectModal" class="projectmodal" onclick="closeModal(this);">
-		<div class="project-content" id="project-content" >
-		 <div class="project-carousel">
-		 	<div class="window">
-		 	<div class="carouselimg" id="carousel" style="background: url('${pageContext.request.contextPath}/resources/img/eunbori/hugstar21.jpg') center center / cover;">
-		 	<i class="material-icons bottom-left">keyboard_arrow_left</i>
-		 	<i class="material-icons bottom-right">keyboard_arrow_right</i>
-		 	</div>
-		 	</div>
-		 	<div class="info-box">
-		 		<div class="title"></div>
-		 		<div class="tag"></div>
-		 		<div class="detail"></div>
-		 	</div>
-		 	<i class="material-icons close" onclick="closeModal();">close</i>
-		 </div>
-		</div>
-	</div>
+	
+	<!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          Modal body..
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
   <!-- modal -->
 <section style="height: 93vh;">
 	<div class="row">
@@ -614,7 +462,7 @@ function sendemail(text){
 		<nav class="navbar navbar-light">
 			<a class="navbar-brand" href="javascript:href('home')">Home</a>
 			<a class="navbar-brand" href="javascript:href('About')">About</a>
-			<a class="navbar-brand" href="javascript:href('project')">Project</a>
+			<a class="navbar-brand" href="javascript:href('Portfolio')">Portfolio</a>
 			<a class="navbar-brand" href="javascript:href('Contact')">Contact</a>
 		</nav>
 	</div>
@@ -699,17 +547,13 @@ function sendemail(text){
 					</div>
 					<p class="wide mt-3">JvavScript</p>
 			      	<div class="progress progress_good">
-			  			<div class="progress-bar" style="width:85%">85%</div>
+			  			<div class="progress-bar" style="width:80%">80%</div>
 					</div>
 					<p class="wide mt-3">SQL</p>
 			      	<div class="progress progress_good">
-			  			<div class="progress-bar" style="width:85%">85%</div>
+			  			<div class="progress-bar" style="width:80%">80%</div>
 					</div>
-					<p class="wide mt-3">Linux</p>
-			      	<div class="progress progress_good">
-			  			<div class="progress-bar" style="width:50%">50%</div>
-					</div>
-					<p class="wide mt-3">Development potential</p>
+					<p class="wide mt-3">진우사랑</p>
 			      	<div class="progress progress_good">
 			  			<div class="progress-bar" style="width:100%">100%</div>
 					</div>
@@ -717,31 +561,16 @@ function sendemail(text){
 		    </div>
 	</div>
 	
-	<!-- project -->
-	<div class="background_project">
-	<div class="project">
-	<h2>PROJECTS</h2>
+	<!-- portfolio -->
+	<div class="background_portfolio">
+	<div class="portfolio">
+	<h2>PORTFOLIO</h2>
 	<p class="p mb-3">My WorK</p>
-		<p class="mb-5">Here are some of my latest lorem work ipsum tipsum. Click on the images to make them bigger</p>
+		<p>Here are some of my latest lorem work ipsum tipsum. Click on the images to make them bigger</p>
 		<div class="row">
-			<div class="project_third">
-			<div class="imgcontainer" onclick="openModal('ejumptocoding');">
-				<img src="${pageContext.request.contextPath}/resources/img/carousel/ejumptocoding.png" style="width: 100%">
-				<div class="overlay">Jump To Coding</div>
-			</div>
-			</div>
-			<div class="project_third">
-			<div class="imgcontainer" onclick="openModal('eloling');">
-				<img src="${pageContext.request.contextPath}/resources/img/carousel/eloling.png" style="width: 100%">
-				<div class="overlay">LoLing</div>
-			</div>
-			</div>
-			<div class="project_third">
-			<div class="imgcontainer" onclick="openModal('esbbj');">
-				<img src="${pageContext.request.contextPath}/resources/img/carousel/esbbj.png" style="width: 100%">
-				<div class="overlay">SBBJ</div>
-			</div>
-			</div>		
+			<div class="portfolio_third"><img src="${pageContext.request.contextPath}/resources/img/logo1.png" style="width: 100%"></div>
+			<div class="portfolio_third"><img src="${pageContext.request.contextPath}/resources/img/logo1.png" style="width: 100%"></div>
+			<div class="portfolio_third"><img src="${pageContext.request.contextPath}/resources/img/logo1.png" style="width: 100%"></div>		
 		</div>
 	</div>
 	</div>
@@ -770,7 +599,7 @@ function sendemail(text){
 		  <nav class="navbar navbar-light">
 			<a class="navbar-brand" href="javascript:href('home')">Home</a>
 			<a class="navbar-brand" href="javascript:href('About')">About</a>
-			<a class="navbar-brand" href="javascript:href('Jproject')">Project</a>
+			<a class="navbar-brand" href="javascript:href('JPortfolio')">Portfolio</a>
 			<a class="navbar-brand" href="javascript:href('JContact')">Contact</a>
 		  </nav>
 		</div>
@@ -862,44 +691,20 @@ function sendemail(text){
 			      	<div class="progress progress_good">
 			  			<div class="progress-bar" style="width:95%">95%</div>
 					</div>
-					<p class="wide mt-3">Linux</p>
+					<p class="wide mt-3">SPRING</p>
 			      	<div class="progress progress_good">
-			  			<div class="progress-bar" style="width:50%">50%</div>
-					</div>
-					<p class="wide mt-3">Development potential</p>
-			      	<div class="progress progress_good">
-			  			<div class="progress-bar" style="width:90%">90%</div>
+			  			<div class="progress-bar" style="width:85%">85%</div>
 					</div>
 			    </div>
 		    </div>
 	</div>
 	
-	<!-- project -->
-	<div class="background_project">
-	<div class="project">
-	<h2>PROJECTS</h2>
+	<!-- portfolio -->
+	<div class="background_portfolio">
+	<div class="portfolio">
+	<h2>PORTFOLIO</h2>
 	<p class="p mb-3">My WorK</p>
 		<p>Here are some of my latest lorem work ipsum tipsum. Click on the images to make them bigger</p>
-		<div class="row">
-			<div class="project_third">
-			<div class="imgcontainer" onclick="openModal('jjumptocoding');">
-				<img src="${pageContext.request.contextPath}/resources/img/carousel/jjumptocoding.png" style="width: 100%">
-				<div class="overlay">Jump To Coding</div>
-			</div>
-			</div>
-			<div class="project_third">
-			<div class="imgcontainer" onclick="openModal('jloling');">
-				<img src="${pageContext.request.contextPath}/resources/img/carousel/jloling.png" style="width: 100%">
-				<div class="overlay">LoLing</div>
-			</div>
-			</div>
-			<div class="project_third">
-			<div class="imgcontainer" onclick="openModal('jsbbj');">
-				<img src="${pageContext.request.contextPath}/resources/img/carousel/jsbbj.png" style="width: 100%">
-				<div class="overlay">SBBJ</div>
-			</div>
-			</div>		
-		</div>
 	</div>
 	</div>
 	

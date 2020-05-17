@@ -28,9 +28,6 @@
 
 <title>jinstar</title>
 <style>
-*{
- 	font-family: "Raleway", "Avenir",'Lato',"애플 SD 산돌고딕 Neo","Apple SD Gothic Neo","나눔바른고딕",NanumBarunGothic,"나눔고딕",NanumGothic,"맑은 고딕","Malgun Gothic","돋움",dotum,AppleGothic,sans-serif;
-}
 body::-webkit-scrollbar { 
     display: none;
 }

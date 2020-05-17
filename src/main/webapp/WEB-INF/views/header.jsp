@@ -192,7 +192,7 @@ $(document).ready(function(){
 	  </a>
 	  
 	  <!--  pcnav link -->
-	  <a class="navbar-brand pcnav" href="${pageContext.request.contextPath}/profile">Profile</a>
+	  <a class="navbar-brand pcnav" href="${pageContext.request.contextPath}/Profile">Profile</a>
 	  <a class="navbar-brand pcnav" href="${pageContext.request.contextPath}/Story">Story</a>
 	  <a class="navbar-brand pcnav" href="${pageContext.request.contextPath}/Board">Board</a>
 	  <!-- <a class="navbar-brand pcnav" href="About">About</a> -->
@@ -219,7 +219,7 @@ $(document).ready(function(){
   	<!-- mobile nav link -->
 	<div class="togglenav">
 		<ul class="list-group list-group-flush">
-		  <li class="list-group-item"><a href="${pageContext.request.contextPath}/profile">Profile</a></li>
+		  <li class="list-group-item"><a href="${pageContext.request.contextPath}/Profile">Profile</a></li>
 		  <li class="list-group-item"><a href="${pageContext.request.contextPath}/Story">Story</a></li>
 		  <li class="list-group-item"><a href="${pageContext.request.contextPath}/Board">Board</a></li>
 		  <!-- <li class="list-group-item"><a href="About">About</a></li> -->

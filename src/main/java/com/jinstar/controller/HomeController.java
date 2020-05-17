@@ -35,6 +35,12 @@ public class HomeController {
 		return "home";
 	}
 	
+	@RequestMapping("/Profile")
+	public String Profile(Model model) {
+		model.addAttribute("contentpage", "profile/profile.jsp" );
+		return "home";
+	}
+	
 	@RequestMapping("/profile")
 	public String profile(Model model) {
 		model.addAttribute("contentpage", "profile/profile.jsp" );
