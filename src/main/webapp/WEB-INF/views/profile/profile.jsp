@@ -349,6 +349,24 @@ input[type=text], input[type=email], textarea{
     overflow: hidden;
     position: relative;
 }
+#carousel {
+    transform: translateX(0px);
+    position: relative;
+    top: 0;
+    width: 10000px;
+}
+.slide{
+	width: 700px;
+	height: 450px;
+	cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    float: left;
+    justify-content: center;
+}
+.transition{
+	transition: 0.7s;
+}
 @media all and (max-width:960px){
 .about_column{
 	width: 100%
@@ -442,6 +460,36 @@ $(document).ready(function(){
 	document.getElementById("project-content").addEventListener("click", function(event){
 			event.stopPropagation();
 		});
+	  $('#next').click(function() {
+	    shiftSlide(-1);
+		  });
+	  $('#prev').click(function() {
+	    shiftSlide(1);
+	  });
+	 var carousel = $('#carousel'),
+	    slideWidth = 700,
+	    threshold = slideWidth / 3,
+	    dragStart,
+	    dragEnd;
+	 
+	 function shiftSlide(direction) {
+		    if (carousel.hasClass('transition')) return;
+		    dragEnd = dragStart;
+		    $(document).off('mouseup');
+		    carousel
+		      .off('mousemove')
+		      .addClass('transition')
+		      .css('transform', 'translateX(' + direction * slideWidth + 'px)');
+		    setTimeout(function() {
+		      if (direction === 1) {
+		        $('.slide:first').before($('.slide:last'));
+		      } else if (direction === -1) {
+		        $('.slide:last').after($('.slide:first'));
+		      }
+		      carousel.removeClass('transition');
+		      carousel.css('transform', 'translateX(0px)');
+		    }, 700);
+	}
 })
 //페이지 내부 이동
 function href(text){
@@ -562,12 +610,18 @@ function sendemail(text){
 	    $('#project-content .title').text(modalText[item].title);
 	    $('#project-content .detail').text(modalText[item].detail);
 	    $('#project-content .tag').text(modalText[item].tag);
-	    $('#carousel').css({
-	        background:
-	            "url('${pageContext.request.contextPath}/resources/img/carousel/"+item+".png') center center/cover",
+	    
+	    $.each($('#carousel .slide'), function(index, value) {
+	        $(this).css({
+	          background:
+	        	  "url('${pageContext.request.contextPath}/resources/img/carousel/"+item+index+".png') center center/cover",
 	          backgroundSize: 'cover'
 	        });
+	      });
 	}
+
+	 
+	
 </script>
 </head>
 <body>
@@ -576,11 +630,19 @@ function sendemail(text){
 	<div id="ProjectModal" class="projectmodal" onclick="closeModal(this);">
 		<div class="project-content" id="project-content" >
 		 <div class="project-carousel">
-		 	<div class="window">
-		 	<div class="carouselimg" id="carousel" style="background: url('${pageContext.request.contextPath}/resources/img/eunbori/hugstar21.jpg') center center / cover;">
-		 	<i class="material-icons bottom-left">keyboard_arrow_left</i>
-		 	<i class="material-icons bottom-right">keyboard_arrow_right</i>
-		 	</div>
+			 <div class="carousel-wrap">
+				 	<div class="window">
+					 	<div class="carouselimg" id="carousel">
+					 		<div class="slide"></div>
+					 		<div class="slide"></div>
+					 		<div class="slide"></div>
+					 		<div class="slide"></div>
+					 		<div class="slide"></div>
+					 		<div class="slide"></div>
+					 	</div>
+				 	<i class="material-icons bottom-left" id="prev">keyboard_arrow_left</i>
+				 	<i class="material-icons bottom-right" id="next">keyboard_arrow_right</i>
+				 	</div>
 		 	</div>
 		 	<div class="info-box">
 		 		<div class="title"></div>
@@ -726,19 +788,19 @@ function sendemail(text){
 		<div class="row">
 			<div class="project_third">
 			<div class="imgcontainer" onclick="openModal('ejumptocoding');">
-				<img src="${pageContext.request.contextPath}/resources/img/carousel/ejumptocoding.png" style="width: 100%">
+				<img src="${pageContext.request.contextPath}/resources/img/carousel/ejumptocoding0.png" style="width: 100%">
 				<div class="overlay">Jump To Coding</div>
 			</div>
 			</div>
 			<div class="project_third">
 			<div class="imgcontainer" onclick="openModal('eloling');">
-				<img src="${pageContext.request.contextPath}/resources/img/carousel/eloling.png" style="width: 100%">
+				<img src="${pageContext.request.contextPath}/resources/img/carousel/eloling0.png" style="width: 100%">
 				<div class="overlay">LoLing</div>
 			</div>
 			</div>
 			<div class="project_third">
 			<div class="imgcontainer" onclick="openModal('esbbj');">
-				<img src="${pageContext.request.contextPath}/resources/img/carousel/esbbj.png" style="width: 100%">
+				<img src="${pageContext.request.contextPath}/resources/img/carousel/esbbj0.png" style="width: 100%">
 				<div class="overlay">SBBJ</div>
 			</div>
 			</div>		
@@ -883,19 +945,19 @@ function sendemail(text){
 		<div class="row">
 			<div class="project_third">
 			<div class="imgcontainer" onclick="openModal('jjumptocoding');">
-				<img src="${pageContext.request.contextPath}/resources/img/carousel/jjumptocoding.png" style="width: 100%">
+				<img src="${pageContext.request.contextPath}/resources/img/carousel/jjumptocoding0.png" style="width: 100%">
 				<div class="overlay">Jump To Coding</div>
 			</div>
 			</div>
 			<div class="project_third">
 			<div class="imgcontainer" onclick="openModal('jloling');">
-				<img src="${pageContext.request.contextPath}/resources/img/carousel/jloling.png" style="width: 100%">
+				<img src="${pageContext.request.contextPath}/resources/img/carousel/jloling0.png" style="width: 100%">
 				<div class="overlay">LoLing</div>
 			</div>
 			</div>
 			<div class="project_third">
 			<div class="imgcontainer" onclick="openModal('jsbbj');">
-				<img src="${pageContext.request.contextPath}/resources/img/carousel/jsbbj.png" style="width: 100%">
+				<img src="${pageContext.request.contextPath}/resources/img/carousel/jsbbj0.png" style="width: 100%">
 				<div class="overlay">SBBJ</div>
 			</div>
 			</div>		
