@@ -352,6 +352,7 @@ input[type=text], input[type=email], textarea{
 #carousel {
     transform: translateX(0px);
     position: relative;
+    left: -700px;
     top: 0;
     width: 10000px;
 }
@@ -788,19 +789,19 @@ function sendemail(text){
 		<div class="row">
 			<div class="project_third">
 			<div class="imgcontainer" onclick="openModal('ejumptocoding');">
-				<img src="${pageContext.request.contextPath}/resources/img/carousel/ejumptocoding0.png" style="width: 100%">
+				<img src="${pageContext.request.contextPath}/resources/img/carousel/ejumptocoding1.png" style="width: 100%">
 				<div class="overlay">Jump To Coding</div>
 			</div>
 			</div>
 			<div class="project_third">
 			<div class="imgcontainer" onclick="openModal('eloling');">
-				<img src="${pageContext.request.contextPath}/resources/img/carousel/eloling0.png" style="width: 100%">
+				<img src="${pageContext.request.contextPath}/resources/img/carousel/eloling1.png" style="width: 100%">
 				<div class="overlay">LoLing</div>
 			</div>
 			</div>
 			<div class="project_third">
 			<div class="imgcontainer" onclick="openModal('esbbj');">
-				<img src="${pageContext.request.contextPath}/resources/img/carousel/esbbj0.png" style="width: 100%">
+				<img src="${pageContext.request.contextPath}/resources/img/carousel/esbbj1.png" style="width: 100%">
 				<div class="overlay">SBBJ</div>
 			</div>
 			</div>		
@@ -945,19 +946,19 @@ function sendemail(text){
 		<div class="row">
 			<div class="project_third">
 			<div class="imgcontainer" onclick="openModal('jjumptocoding');">
-				<img src="${pageContext.request.contextPath}/resources/img/carousel/jjumptocoding0.png" style="width: 100%">
+				<img src="${pageContext.request.contextPath}/resources/img/carousel/jjumptocoding1.png" style="width: 100%">
 				<div class="overlay">Jump To Coding</div>
 			</div>
 			</div>
 			<div class="project_third">
 			<div class="imgcontainer" onclick="openModal('jloling');">
-				<img src="${pageContext.request.contextPath}/resources/img/carousel/jloling0.png" style="width: 100%">
+				<img src="${pageContext.request.contextPath}/resources/img/carousel/jloling1.png" style="width: 100%">
 				<div class="overlay">LoLing</div>
 			</div>
 			</div>
 			<div class="project_third">
 			<div class="imgcontainer" onclick="openModal('jsbbj');">
-				<img src="${pageContext.request.contextPath}/resources/img/carousel/jsbbj0.png" style="width: 100%">
+				<img src="${pageContext.request.contextPath}/resources/img/carousel/jsbbj1.png" style="width: 100%">
 				<div class="overlay">SBBJ</div>
 			</div>
 			</div>		
