@@ -3,7 +3,9 @@ package com.jinstar.controller;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 
 import javax.mail.internet.MimeMessage;
@@ -20,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.jinstar.service.BoardService;
+
 /**
  * Handles requests for the application home page.
  */
@@ -28,6 +32,9 @@ public class HomeController {
 	
 	@Autowired
 	private JavaMailSenderImpl mailSender;
+	
+	@Autowired
+	private BoardService boardService;
 	
 	@RequestMapping("/")
 	public String home(Locale locale, Model model) {
@@ -54,7 +61,10 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/Board")
-	public String Board(Model model) {
+	public String Board(Model model, @RequestParam HashMap<String, Object> map) {
+		System.out.println(map);
+		List<HashMap<String, Object>> list = boardService.getBoardList(map);
+		model.addAttribute("list", list);
 		model.addAttribute("contentpage", "Board/Board.jsp" );
 		return "home";
 	}
