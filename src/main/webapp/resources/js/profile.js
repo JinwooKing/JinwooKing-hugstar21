@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	// 화면 사이즈 변경 될 때 
+	
 	$(window).resize(function(){
 		// 최하단 홈버튼 위치 조절
 		set_homebtn();
@@ -101,6 +102,9 @@ $(document).ready(function(){
 		    }, 700);
 	}
 })
+
+//end document ready 
+
 //페이지 내부 이동
 function href(text){
 	// 이동할 위치
@@ -141,7 +145,64 @@ function href(text){
 		$('html').animate({scrollTop : h}, 200);
 	}
 }
-// 메일전송
+
+//modal
+function openModal(item) {
+  fillModal(item);
+  document.getElementById("ProjectModal").style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById("ProjectModal").style.display = "none";
+}
+	
+var modalText = {
+		ejumptocoding : {
+			title : 'Jump To Coding',
+			tag : '반응형‘종합학습사이트’',
+			detail : ' 언어소개담당'
+		},
+		eloling : {
+			title : 'LOLING',
+			tag : ' 폐쇄형‘게임정보공유커뮤니티’',
+			detail : ' 대회갤린더게시판 담당 '
+		},
+		esbbj : {
+			title : 'SBBJ',
+			tag : ' 관리자, 판매자, 구매자 ‘3계층 오픈마켓’',
+			detail : ' 상품상세보기·장바구니·고객센터·FAQ·서버/DB 구축관리 담당'
+		},
+		jjumptocoding : {
+			title : 'Jump To Coding',
+			tag : '반응형‘종합학습사이트’',
+			detail : ' 메인담당'
+		},
+		jloling : {
+			title : 'LOLING',
+			tag : ' 폐쇄형‘게임정보공유커뮤니티’',
+			detail : ' 조장·회원가입·원딜게시판·DB 구축관리 담당'
+		},
+		jsbbj : {
+			title : 'SBBJ',
+			tag : ' 관리자, 판매자, 구매자 ‘3계층 오픈마켓’',
+			detail : ' 회원가입·로그인·상품리스트·리뷰·관리자페이지·서버 구축관리 담당'
+		}
+}
+	
+function fillModal(item) {
+    $('#project-content .title').text(modalText[item].title);
+    $('#project-content .detail').text(modalText[item].detail);
+    $('#project-content .tag').text(modalText[item].tag);
+    
+    $.each($('#carousel .slide'), function(index, value) {
+        $(this).css({
+          background:
+        	  "url('"+ctx+"/resources/img/carousel/"+item+index+".png') center center/cover",
+          backgroundSize: 'cover'
+        });
+      });
+}	
+
 function sendemail(text){
 
 	let name = 	document.forms[text]["name"].value;
@@ -154,7 +215,7 @@ function sendemail(text){
 		To = "hugstar21@gmail.com";
 	}
 	$.ajax({
-		url : "${pageContext.request.contextPath}/sendMail"
+		url : ctx+"/sendMail"
 		,data : {name, email, message, To} 
 		,dataType : "text"
 		,async: false
@@ -173,60 +234,3 @@ function sendemail(text){
 	});
 }
 //end 메일전송
-
-//modal
-	function openModal(item) {
-	  fillModal(item);
-	  document.getElementById("ProjectModal").style.display = "block";
-	}
-	
-	function closeModal() {
-	  document.getElementById("ProjectModal").style.display = "none";
-	}
-	
-	var modalText = {
-			ejumptocoding : {
-				title : 'Jump To Coding',
-				tag : '반응형‘종합학습사이트’',
-				detail : ' 언어소개담당'
-			},
-			eloling : {
-				title : 'LOLING',
-				tag : ' 폐쇄형‘게임정보공유커뮤니티’',
-				detail : ' 대회갤린더게시판 담당 '
-			},
-			esbbj : {
-				title : 'SBBJ',
-				tag : ' 관리자, 판매자, 구매자 ‘3계층 오픈마켓’',
-				detail : ' 상품상세보기·장바구니·고객센터·FAQ·서버/DB 구축관리 담당'
-			},
-			jjumptocoding : {
-				title : 'Jump To Coding',
-				tag : '반응형‘종합학습사이트’',
-				detail : ' 메인담당'
-			},
-			jloling : {
-				title : 'LOLING',
-				tag : ' 폐쇄형‘게임정보공유커뮤니티’',
-				detail : ' 조장·회원가입·원딜게시판·DB 구축관리 담당'
-			},
-			jsbbj : {
-				title : 'SBBJ',
-				tag : ' 관리자, 판매자, 구매자 ‘3계층 오픈마켓’',
-				detail : ' 회원가입·로그인·상품리스트·리뷰·관리자페이지·서버 구축관리 담당'
-			}
-	}
-	
-	function fillModal(item) {
-	    $('#project-content .title').text(modalText[item].title);
-	    $('#project-content .detail').text(modalText[item].detail);
-	    $('#project-content .tag').text(modalText[item].tag);
-	    
-	    $.each($('#carousel .slide'), function(index, value) {
-	        $(this).css({
-	          background:
-	        	  "url('${pageContext.request.contextPath}/resources/img/carousel/"+item+index+".png') center center/cover",
-	          backgroundSize: 'cover'
-	        });
-	      });
-	}

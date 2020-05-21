@@ -5,6 +5,9 @@
 <head>
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/profile.css">
 	<script src="${pageContext.request.contextPath}/resources/js/profile.js"></script>
+	<script>
+	var ctx = "${pageContext.request.contextPath}"
+	</script>
 </head>
 <body>
 <!-- home -->

@@ -364,7 +364,7 @@ input[type=text], input[type=email], textarea{
 .transition{
 	transition: 0.7s;
 }
-@media all and (max-width:960px){
+@media all and (max-width:768px){
 .about_column{
 	width: 100%
 }
@@ -381,7 +381,7 @@ input[type=text], input[type=email], textarea{
 	width: 50%;
 }
 }
-@media all and (max-width:500px){
+@media all and (max-width:576px){
 .pronav a{
 	padding: 9px 11px;
 	font-size: 14px;

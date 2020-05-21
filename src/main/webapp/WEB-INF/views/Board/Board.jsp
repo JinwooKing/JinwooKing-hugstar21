@@ -5,7 +5,7 @@
 <head>
 <style>
 .content{
-	padding: 64px 16px;
+	padding: 64px 16px 0px;
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
@@ -20,7 +20,6 @@
 .cont_post{
     position: relative;
     max-width: 840px;
-    min-width: 640px;
 	padding-right: 200px;
 	border-bottom: 1px solid #ededed;
 }
@@ -59,6 +58,9 @@
     padding-bottom: 30px;
     width: 100%;
 }
+dl, dd, dt{
+	margin-bottom: 0px;
+}
 .cont_post dt {
     float: left;
     margin-right: 5px;
@@ -81,13 +83,45 @@
     font-size: 0;
     line-height: 0;
 }
-@media all and (max-width:960px){
+@media all and (max-width:768px){
+.contents {
+    max-width: 100%;
+    margin: 0 15px;
+}
 .post_article {
-    margin: 0 0px 30px 0;
+    max-width: 100%;
+    margin: 0 0 30px 0;
 }
-
+.cont_post {
+    max-width: 100%;
+    padding: 0;
 }
-@media all and (max-width:500px){
+.cont_post h2 {
+    font-size: 22px;
+    padding-bottom: 15px;
+}
+.post_article .cont_img {
+    position: relative;
+    float: left;
+    width: 100px;
+    height: 70px;
+    overflow: hidden;
+}
+.post_article .post_txt_wrap {
+    display: block;
+    overflow: hidden;
+    padding-left: 20px;
+}
+.cont_post .post_txt {
+    max-height: 60px;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+.cont_post dl {
+    padding-top: 15px;
+}
+}
+@media all and (max-width:576px){
 }
 
 </style>
