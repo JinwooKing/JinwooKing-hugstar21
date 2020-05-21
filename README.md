@@ -1,5 +1,6 @@
 ## JinwooKing-hugstar21
 ### 안은별과 박진우의 사이트입니다.
+http://54.180.109.23:8080/JinwooKing-hugstar21/
 
 #### 팀원 : 안은별, 박진우
 
