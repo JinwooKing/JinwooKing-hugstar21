@@ -7,4 +7,6 @@ public interface BoardService {
 
 	List<HashMap<String, Object>> getBoardList(HashMap<String, Object> map);
 
+	HashMap<String, Object> getBoardDetail(HashMap<String, Object> map);
+
 }

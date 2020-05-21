@@ -33,9 +33,6 @@ public class HomeController {
 	@Autowired
 	private JavaMailSenderImpl mailSender;
 	
-	@Autowired
-	private BoardService boardService;
-	
 	@RequestMapping("/")
 	public String home(Locale locale, Model model) {
 		model.addAttribute("contentpage", "main.jsp" );
@@ -57,15 +54,6 @@ public class HomeController {
 	@RequestMapping("/Story")
 	public String Story(Model model) {
 		model.addAttribute("contentpage", "Story/Story.jsp" );
-		return "home";
-	}
-	
-	@RequestMapping("/Board")
-	public String Board(Model model, @RequestParam HashMap<String, Object> map) {
-		System.out.println(map);
-		List<HashMap<String, Object>> list = boardService.getBoardList(map);
-		model.addAttribute("list", list);
-		model.addAttribute("contentpage", "Board/Board.jsp" );
 		return "home";
 	}
 	

@@ -18,4 +18,9 @@ public class BoardServiceimp implements BoardService {
 	public List<HashMap<String, Object>> getBoardList(HashMap<String, Object> map) {
 		return boardMapper.getBoardList(map);
 	}
+
+	@Override
+	public HashMap<String, Object> getBoardDetail(HashMap<String, Object> map) {
+		return boardMapper.getBoardDetail(map);
+	}
 }
