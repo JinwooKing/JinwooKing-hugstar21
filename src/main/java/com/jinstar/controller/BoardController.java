@@ -27,13 +27,30 @@ public class BoardController {
 		return "home";
 	}
 	
-	@RequestMapping("/Board/{no}")
-	public String Boarddetail(Model model, @PathVariable HashMap<String, Object> map) {
+	@RequestMapping("/Board/detail")
+	public String Boarddetail(Model model, @RequestParam HashMap<String, Object> map) {
 		System.out.println(map);
 		HashMap<String, Object> detail = boardService.getBoardDetail(map);
 		System.out.println(detail);
 		model.addAttribute("detail", detail);
 		model.addAttribute("contentpage", "Board/detail.jsp" );
 		return "home";
+	}
+	
+	@RequestMapping("/Board/write")
+	public String Boardwrite(Model model, @RequestParam HashMap<String, Object> map) {
+		System.out.println(map);
+		model.addAttribute("contentpage", "Board/write.jsp" );
+		return "home";
+	}
+	
+	@RequestMapping("Board/SmartEditor2Skin")
+	public String BoardSmartEditor2Skin(Model model) {
+		return "Board/SmartEditor2Skin";
+	}
+	
+	@RequestMapping("Board/smart_editor2_inputarea")
+	public String BoardSmartEditor2inputarea(Model model){
+		return "Board/smart_editor2_inputarea";
 	}
 }

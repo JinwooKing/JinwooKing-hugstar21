@@ -83,6 +83,9 @@ dl, dd, dt{
     font-size: 0;
     line-height: 0;
 }
+.btn a {
+	color: white;
+}
 @media all and (max-width:768px){
 .contents {
     max-width: 100%;
@@ -128,16 +131,16 @@ dl, dd, dt{
 </head>
 <body>
 <!-- <div class="ready"><i class="material-icons">watch_later</i><h2>게시판 준비중입니다.</h2></div> -->
-<div class="content">
+<div class="content" style="min-height: 90vh">
 	<c:forEach var="index" items="${list}">
 		<div class="post_article">
 			<div class="cont_post">
-				<h2><a href="${pageContext.request.contextPath}/Board/${index.no}">${index.title}</a></h2>
+				<h2><a href="${pageContext.request.contextPath}/Board/detail?no=${index.no}">${index.title}</a></h2>
 				<div class="cont_img">
-					<a href="${pageContext.request.contextPath}/Board/${index.no}">
+					<a href="${pageContext.request.contextPath}/Board/detail?no=${index.no}">
 					<img src="${pageContext.request.contextPath}/resources/img/logo1.png" width="100%" height="100%" alt=""></a>
 				</div>
-				<a href="${pageContext.request.contextPath}/Board/${index.no}" class="post_txt_wrap">
+				<a href="${pageContext.request.contextPath}/Board/detail?no=${index.no}" class="post_txt_wrap">
 					<div class="post_txt">${index.content}</div>
 			    </a>
 				<dl><dt><i class="xi-time-o"><span class="blind">등록일</span></i></dt><dd>${index.date}</dd>
@@ -145,7 +148,9 @@ dl, dd, dt{
 					<dt><i class="xi-eye"><span class="blind">카운트</span></i></dt><dd>2699</dd></dl>
 			</div>
 		</div>
+		
 	</c:forEach>
+	<button class="btn btn-secondary"><a href="${pageContext.request.contextPath}/Board/write?category=board">글쓰기</a></button>
 </div>
 </body>
 </html>
