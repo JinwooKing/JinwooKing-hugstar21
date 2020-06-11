@@ -18,6 +18,18 @@
     margin: 0 0px 30px 0;
 }
 
+.btn {
+	font-size: 1rem !important;
+}
+
+.title{
+	border: 0px;
+	border-bottom: 1px solid silver;
+	width: 100%;
+	padding: 15px;
+	outline: none;
+	font-size: 12em;
+}
 @media all and (max-width:768px){
 .contents {
     max-width: 100%;
@@ -30,7 +42,7 @@
 
 }
 @media all and (max-width:576px){
-
+	
 }
 
 
@@ -40,13 +52,15 @@
 <body>
 <div class="content" style="min-height: 90vh">
 		<div class="write">
-			<form action="sample/viewer/index.php" method="post">
-			<textarea name="ir1" id="ir1" rows="10" cols="100" style="width:100%; height:412px; display:none;"></textarea>
+			<form action="${pageContext.request.contextPath}/Board/writeresult" method="post">
+			<input class="title mb-3" type="text" id="title" name="title" placeholder="제목">	
+			<textarea name="ir1" id="ir1" rows="10" cols="100" style="width:100%; height:612px; display:none;"></textarea>
 	<p>
-		<input type="button" onclick="pasteHTML();" value="본문에 내용 넣기" />
-		<input type="button" onclick="showHTML();" value="본문 내용 가져오기" />
-		<input type="button" onclick="submitContents(this);" value="서버로 내용 전송" />
-		<input type="button" onclick="setDefaultFont();" value="기본 폰트 지정하기 (궁서_24)" />
+		<input class="btn btn-secondary" type="button" onclick="pasteHTML();" value="본문에 내용 넣기" />
+		<input class="btn btn-secondary" type="button" onclick="showHTML();" value="본문 내용 가져오기" />
+		<input class="btn btn-secondary" type="button" onclick="setDefaultFont();" value="기본 폰트 지정하기 (궁서_24)" />
+		<input class="btn btn-secondary" type="button" onclick="submitContents(this);" value="글작성" />
+		
 	</p>
 </form>
 		</div>

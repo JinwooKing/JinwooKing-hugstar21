@@ -5,8 +5,12 @@ import java.util.List;
 
 public interface BoardService {
 
-	List<HashMap<String, Object>> getBoardList(HashMap<String, Object> map);
+	List<HashMap<String, Object>> selectBoardList(HashMap<String, Object> map);
 
-	HashMap<String, Object> getBoardDetail(HashMap<String, Object> map);
+	HashMap<String, Object> selectBoardDetail(HashMap<String, Object> map);
+
+	int insertBoard(HashMap<String, Object> map);
+
+	
 
 }

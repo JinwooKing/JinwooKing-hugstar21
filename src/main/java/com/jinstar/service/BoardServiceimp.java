@@ -15,12 +15,17 @@ public class BoardServiceimp implements BoardService {
 	private BoardMapper boardMapper;
 	
 	@Override
-	public List<HashMap<String, Object>> getBoardList(HashMap<String, Object> map) {
-		return boardMapper.getBoardList(map);
+	public List<HashMap<String, Object>> selectBoardList(HashMap<String, Object> map) {
+		return boardMapper.selectBoardList(map);
 	}
 
 	@Override
-	public HashMap<String, Object> getBoardDetail(HashMap<String, Object> map) {
-		return boardMapper.getBoardDetail(map);
+	public HashMap<String, Object> selectBoardDetail(HashMap<String, Object> map) {
+		return boardMapper.selectBoardDetail(map);
+	}
+
+	@Override
+	public int insertBoard(HashMap<String, Object> map) {
+		return boardMapper.insertBoard(map);
 	}
 }

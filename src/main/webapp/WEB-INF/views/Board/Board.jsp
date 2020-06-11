@@ -83,7 +83,7 @@ dl, dd, dt{
     font-size: 0;
     line-height: 0;
 }
-.btn a {
+.btn {
 	color: white;
 }
 @media all and (max-width:768px){
@@ -135,22 +135,22 @@ dl, dd, dt{
 	<c:forEach var="index" items="${list}">
 		<div class="post_article">
 			<div class="cont_post">
-				<h2><a href="${pageContext.request.contextPath}/Board/detail?no=${index.no}">${index.title}</a></h2>
+				<h2><a href="${pageContext.request.contextPath}/Board/detail?bno=${index.bno}">${index.btitle}</a></h2>
 				<div class="cont_img">
-					<a href="${pageContext.request.contextPath}/Board/detail?no=${index.no}">
+					<a href="${pageContext.request.contextPath}/Board/detail?bno=${index.bno}">
 					<img src="${pageContext.request.contextPath}/resources/img/logo1.png" width="100%" height="100%" alt=""></a>
 				</div>
-				<a href="${pageContext.request.contextPath}/Board/detail?no=${index.no}" class="post_txt_wrap">
-					<div class="post_txt">${index.content}</div>
+				<a href="${pageContext.request.contextPath}/Board/detail?bno=${index.bno}" class="post_txt_wrap">
+					<div class="post_txt">${index.bcontent}</div>
 			    </a>
-				<dl><dt><i class="xi-time-o"><span class="blind">등록일</span></i></dt><dd>${index.date}</dd>
+				<dl><dt><i class="xi-time-o"><span class="blind">등록일</span></i></dt><dd>${index.bwritedate}</dd>
 					<dt><span class="blind">|</span></dt><dd><span class="line_bar">|</span></dd>
-					<dt><i class="xi-eye"><span class="blind">카운트</span></i></dt><dd>2699</dd></dl>
+					<dt><i class="xi-eye"><span class="blind">카운트</span></i></dt><dd>${index.bhit}</dd></dl>
 			</div>
 		</div>
 		
 	</c:forEach>
-	<button class="btn btn-secondary"><a href="${pageContext.request.contextPath}/Board/write?category=board">글쓰기</a></button>
+	<a class="btn btn-secondary mb-5" href="${pageContext.request.contextPath}/Board/write?category=board">글작성</a>
 </div>
 </body>
 </html>

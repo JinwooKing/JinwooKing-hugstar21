@@ -21,7 +21,7 @@ public class BoardController {
 	@RequestMapping("/Board")
 	public String Board(Model model, @RequestParam HashMap<String, Object> map) {
 		System.out.println(map);
-		List<HashMap<String, Object>> list = boardService.getBoardList(map);
+		List<HashMap<String, Object>> list = boardService.selectBoardList(map);
 		model.addAttribute("list", list);
 		model.addAttribute("contentpage", "Board/Board.jsp" );
 		return "home";
@@ -30,7 +30,7 @@ public class BoardController {
 	@RequestMapping("/Board/detail")
 	public String Boarddetail(Model model, @RequestParam HashMap<String, Object> map) {
 		System.out.println(map);
-		HashMap<String, Object> detail = boardService.getBoardDetail(map);
+		HashMap<String, Object> detail = boardService.selectBoardDetail(map);
 		System.out.println(detail);
 		model.addAttribute("detail", detail);
 		model.addAttribute("contentpage", "Board/detail.jsp" );
@@ -44,13 +44,11 @@ public class BoardController {
 		return "home";
 	}
 	
-	@RequestMapping("Board/SmartEditor2Skin")
-	public String BoardSmartEditor2Skin(Model model) {
-		return "Board/SmartEditor2Skin";
-	}
-	
-	@RequestMapping("Board/smart_editor2_inputarea")
-	public String BoardSmartEditor2inputarea(Model model){
-		return "Board/smart_editor2_inputarea";
+	@RequestMapping("/Board/writeresult")
+	public String Boardwriteresult(Model model, @RequestParam HashMap<String, Object> map) {
+		System.out.println(map);
+		boardService.insertBoard(map);
+		
+		return "redirect:/Board";
 	}
 }

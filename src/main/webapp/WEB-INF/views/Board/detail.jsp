@@ -130,17 +130,17 @@ dl, dd, dt{
 <div class="content">
 		<div class="post_article">
 			<div class="cont_post">
-				<h2><a href="#">${detail.title}</a></h2>
+				<h2><a href="#">${detail.btitle}</a></h2>
 				<div class="cont_img">
 					<a href="#">
 					<img src="${pageContext.request.contextPath}/resources/img/logo1.png" width="100%" height="100%" alt=""></a>
 				</div>
 				<a href="#" class="post_txt_wrap">
-					<div class="post_txt">${detail.content}</div>
+					<div class="post_txt">${detail.bcontent}</div>
 			    </a>
-				<dl><dt><i class="xi-time-o"><span class="blind">등록일</span></i></dt><dd>${detail.date}</dd>
+				<dl><dt><i class="xi-time-o"><span class="blind">등록일</span></i></dt><dd>${detail.bwritedate}</dd>
 					<dt><span class="blind">|</span></dt><dd><span class="line_bar">|</span></dd>
-					<dt><i class="xi-eye"><span class="blind">카운트</span></i></dt><dd>2699</dd></dl>
+					<dt><i class="xi-eye"><span class="blind">카운트</span></i></dt><dd>${detail.bhit }</dd></dl>
 			</div>
 		</div>
 </div>
