@@ -15,7 +15,15 @@
  <selectKey order="BEFORE" keyProperty="bno" resultType="String">
  select max(bno)+1 from board
  </selectKey>
- insert into board values(#{bno},#{title},#{ir1},now(),"jinwoo",0)
- 
+ insert into board values(#{bno},#{btitle},#{ir1},now(),"jinwoo",0)
  </insert>
+ 
+ <delete id="deleteBoard" parameterType="String">
+ delete from board where bno= #{bno}
+ </delete>
+ 
+ <update id="updateBoard" parameterType="String">
+ update board set btitle = #{btitle}, bcontent = #{ir1}
+ 			  where bno = #{bno}
+ </update>
 </mapper>

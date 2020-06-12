@@ -28,4 +28,14 @@ public class BoardServiceimp implements BoardService {
 	public int insertBoard(HashMap<String, Object> map) {
 		return boardMapper.insertBoard(map);
 	}
+
+	@Override
+	public int deleteBoard(HashMap<String, Object> map) {
+		return boardMapper.deleteBoard(map);
+	}
+
+	@Override
+	public int updateBoard(HashMap<String, Object> map) {
+		return boardMapper.updateBoard(map);
+	}
 }

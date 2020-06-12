@@ -44,11 +44,37 @@ public class BoardController {
 		return "home";
 	}
 	
-	@RequestMapping("/Board/writeresult")
-	public String Boardwriteresult(Model model, @RequestParam HashMap<String, Object> map) {
+	@RequestMapping("/Board/insertBoard")
+	public String BoardinsertBoard(Model model, @RequestParam HashMap<String, Object> map) {
 		System.out.println(map);
 		boardService.insertBoard(map);
 		
 		return "redirect:/Board";
+	}
+	
+	@RequestMapping("/Board/deleteBoard")
+	public String BoarddeleteBoard(Model model, @RequestParam HashMap<String, Object> map) {
+		System.out.println(map);
+		boardService.deleteBoard(map);
+		
+		return "redirect:/Board";
+	}
+	
+	@RequestMapping("/Board/update")
+	public String Boardupdate(Model model, @RequestParam HashMap<String, Object> map) {
+		System.out.println(map);
+		HashMap<String, Object> detail = boardService.selectBoardDetail(map);
+		System.out.println(detail);
+		model.addAttribute("detail", detail);
+		model.addAttribute("contentpage", "Board/update.jsp" );
+		return "home";
+	}
+	
+	@RequestMapping("/Board/updateBoard")
+	public String BoardupdateBoard(Model model, @RequestParam HashMap<String, Object> map) {
+		System.out.println(map);
+		boardService.updateBoard(map);
+		
+		return "redirect:/Board/detail?bno="+map.get("bno");
 	}
 }

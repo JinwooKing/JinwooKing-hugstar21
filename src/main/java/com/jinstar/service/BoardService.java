@@ -11,6 +11,10 @@ public interface BoardService {
 
 	int insertBoard(HashMap<String, Object> map);
 
+	int deleteBoard(HashMap<String, Object> map);
+
+	int updateBoard(HashMap<String, Object> map);
+
 	
 
 }

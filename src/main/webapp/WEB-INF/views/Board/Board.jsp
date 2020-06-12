@@ -6,7 +6,7 @@
 <style>
 .content{
 	padding: 64px 16px 0px;
-    max-width: 1200px;
+    max-width: 1180px;
     margin-left: auto;
     margin-right: auto;
     color: #777;

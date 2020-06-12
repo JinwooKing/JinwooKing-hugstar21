@@ -12,4 +12,8 @@ public interface BoardMapper {
 	HashMap<String, Object> selectBoardDetail(HashMap<String, Object> map);
 
 	int insertBoard(HashMap<String, Object> map);
+
+	int deleteBoard(HashMap<String, Object> map);
+
+	int updateBoard(HashMap<String, Object> map);
 }

@@ -12,16 +12,16 @@
     color: #777;
 }
 .post_article {
-    overflow: hidden;
     position: relative;
-    max-width: 840px;
-    margin: 0 310px 30px 0;
+    width: 100%;
+    max-width: 1148px;
+    margin: 0 auto;
 }
 .cont_post{
     position: relative;
-    max-width: 840px;
-	padding-right: 200px;
+    max-width: 1148px;
 	border-bottom: 1px solid #ededed;
+	margin-bottom: 50px;
 }
 .cont_post h2 {
     font-size: 24px;
@@ -42,7 +42,6 @@
 .cont_post .post_txt {
     font-size: 14px;
     line-height: 20px;
-    max-height: 40px;
     overflow: hidden;
     text-overflow: ellipsis;
     word-break: break-word;
@@ -113,7 +112,6 @@ dl, dd, dt{
     padding-left: 20px;
 }
 .cont_post .post_txt {
-    max-height: 60px;
     margin-bottom: 0;
     margin-top: 0;
 }
@@ -127,22 +125,24 @@ dl, dd, dt{
 </style>
 </head>
 <body>
-<div class="content">
+<div class="content" style="min-height: 90vh">
 		<div class="post_article">
 			<div class="cont_post">
-				<h2><a href="#">${detail.btitle}</a></h2>
-				<div class="cont_img">
-					<a href="#">
-					<img src="${pageContext.request.contextPath}/resources/img/logo1.png" width="100%" height="100%" alt=""></a>
-				</div>
-				<a href="#" class="post_txt_wrap">
-					<div class="post_txt">${detail.bcontent}</div>
-			    </a>
+				<h2>${detail.btitle}</h2>
 				<dl><dt><i class="xi-time-o"><span class="blind">등록일</span></i></dt><dd>${detail.bwritedate}</dd>
 					<dt><span class="blind">|</span></dt><dd><span class="line_bar">|</span></dd>
 					<dt><i class="xi-eye"><span class="blind">카운트</span></i></dt><dd>${detail.bhit }</dd></dl>
+				<%-- <div class="cont_img">
+					<img src="${pageContext.request.contextPath}/resources/img/logo1.png" width="100%" height="100%" alt="">
+				</div> --%>
+					<div class="post_txt">${detail.bcontent}</div>
 			</div>
+		
+		<a class="btn btn-secondary mb-5" href="${pageContext.request.contextPath}/Board/deleteBoard?bno=${detail.bno}">글삭제</a>
+		<a class="btn btn-secondary mb-5" href="${pageContext.request.contextPath}/Board/update?bno=${detail.bno}">글수정</a>
+		<a class="btn btn-secondary mb-5" href="${pageContext.request.contextPath}/Board">글목록</a>
 		</div>
+		
 </div>
 </body>
 </html>
