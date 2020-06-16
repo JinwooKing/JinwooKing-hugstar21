@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.jinstar.DTO.MakePage;
 import com.jinstar.service.BoardService;
 
 @Controller
@@ -21,6 +22,15 @@ public class BoardController {
 	@RequestMapping("/Board")
 	public String Board(Model model, @RequestParam HashMap<String, Object> map) {
 		System.out.println(map);
+		if(!map.containsKey("page")) {
+			map.put("page", ""+1);
+		}
+		int totalcount = boardService.selectBoardTotalCount(map);
+		
+		MakePage page = new MakePage(Integer.parseInt((String)map.get("page")),totalcount,3,5);
+		map.put("page", page);
+		System.out.println(map);
+		model.addAttribute("page", page);
 		List<HashMap<String, Object>> list = boardService.selectBoardList(map);
 		model.addAttribute("list", list);
 		model.addAttribute("contentpage", "Board/Board.jsp" );
@@ -30,6 +40,7 @@ public class BoardController {
 	@RequestMapping("/Board/detail")
 	public String Boarddetail(Model model, @RequestParam HashMap<String, Object> map) {
 		System.out.println(map);
+		boardService.updateHit(map);
 		HashMap<String, Object> detail = boardService.selectBoardDetail(map);
 		System.out.println(detail);
 		model.addAttribute("detail", detail);

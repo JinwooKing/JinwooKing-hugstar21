@@ -6,7 +6,7 @@
 <style>
 .content{
 	padding: 64px 16px 0px;
-    max-width: 1200px;
+    max-width: 1100px;
     margin-left: auto;
     margin-right: auto;
     color: #777;
@@ -14,12 +14,12 @@
 .post_article {
     position: relative;
     width: 100%;
-    max-width: 1148px;
+    max-width: 1100px;
     margin: 0 auto;
 }
 .cont_post{
     position: relative;
-    max-width: 1148px;
+    max-width: 1100px;
 	border-bottom: 1px solid #ededed;
 	margin-bottom: 50px;
 }
@@ -46,6 +46,8 @@
     text-overflow: ellipsis;
     word-break: break-word;
     margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ededed;
     color: #666;
 }
 .cont_post dl {
@@ -131,13 +133,14 @@ dl, dd, dt{
 				<h2>${detail.btitle}</h2>
 				<dl><dt><i class="xi-time-o"><span class="blind">등록일</span></i></dt><dd>${detail.bwritedate}</dd>
 					<dt><span class="blind">|</span></dt><dd><span class="line_bar">|</span></dd>
-					<dt><i class="xi-eye"><span class="blind">카운트</span></i></dt><dd>${detail.bhit }</dd></dl>
+					<dt><i class="xi-eye"><span class="blind">카운트</span></i></dt><dd>${detail.bhit}</dd></dl>
 				<%-- <div class="cont_img">
 					<img src="${pageContext.request.contextPath}/resources/img/logo1.png" width="100%" height="100%" alt="">
 				</div> --%>
 					<div class="post_txt">${detail.bcontent}</div>
+					<div class="mb-3">글쓴이 : ${detail.bwriter}</div>
 			</div>
-		
+			
 		<a class="btn btn-secondary mb-5" href="${pageContext.request.contextPath}/Board/deleteBoard?bno=${detail.bno}">글삭제</a>
 		<a class="btn btn-secondary mb-5" href="${pageContext.request.contextPath}/Board/update?bno=${detail.bno}">글수정</a>
 		<a class="btn btn-secondary mb-5" href="${pageContext.request.contextPath}/Board">글목록</a>

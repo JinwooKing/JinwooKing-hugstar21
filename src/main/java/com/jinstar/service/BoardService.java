@@ -15,6 +15,10 @@ public interface BoardService {
 
 	int updateBoard(HashMap<String, Object> map);
 
+	int updateHit(HashMap<String, Object> map);
+
+	int selectBoardTotalCount(HashMap<String, Object> map);
+
 	
 
 }

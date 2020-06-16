@@ -6,7 +6,7 @@
 <style>
 .content{
 	padding: 64px 16px 0px;
-    max-width: 1180px;
+    max-width: 1100px;
     margin-left: auto;
     margin-right: auto;
     color: #777;
@@ -14,12 +14,12 @@
 .post_article {
     overflow: hidden;
     position: relative;
-    max-width: 840px;
-    margin: 0 310px 30px 0;
+    max-width: 1100px;
+    margin: 0 0px 30px 0;
 }
 .cont_post{
     position: relative;
-    max-width: 840px;
+    max-width: 1100px;
 	padding-right: 200px;
 	border-bottom: 1px solid #ededed;
 }
@@ -86,6 +86,22 @@ dl, dd, dt{
 .btn {
 	color: white;
 }
+.paginate_box{
+	text-align: center;
+}
+.paginate a{
+	border: 1px solid silver;
+	border-radius: 16px;
+	padding: 5px 10px;
+	margin: 2px;
+	font-size: 14px;
+	color: #a0a0a0;
+	text-decoration: none;
+}
+.paginate a:hover, .currpage{
+	color: white !important;
+	background-color: #a0a0a0;
+}
 @media all and (max-width:768px){
 .contents {
     max-width: 100%;
@@ -150,7 +166,21 @@ dl, dd, dt{
 		</div>
 		
 	</c:forEach>
-	<a class="btn btn-secondary mb-5" href="${pageContext.request.contextPath}/Board/write?category=board">글작성</a>
+	<div>
+	<a class="btn btn-secondary mb-2" href="${pageContext.request.contextPath}/Board/write?category=board">글작성</a>
+	</div>
+	<div class="paginate_box">
+	<div class="paginate">
+	<c:if test="${page.prev}"><a style="padding: 5px 2px" href="${pageContext.request.contextPath}/Board?page=${page.startBlock-1}"><i style="vertical-align: bottom;" class="material-icons">navigate_before</i></a></c:if>
+	
+	<c:forEach var="index" begin="${page.startBlock}" end="${page.endBlock}" >
+	<c:if test="${page.currPage eq index}"><a class="currpage">${index}</a></c:if>
+	<c:if test="${page.currPage ne index}"><a href="${pageContext.request.contextPath}/Board?page=${index}">${index}</a></c:if>
+	</c:forEach>
+	
+	<c:if test="${page.next}"><a style="padding: 5px 2px" href="${pageContext.request.contextPath}/Board?page=${page.endBlock+1}"><i style="vertical-align: bottom;" class="material-icons">navigate_next</i></a></c:if>
+	</div>
+	</div>
 </div>
 </body>
 </html>
