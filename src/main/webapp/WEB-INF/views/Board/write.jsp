@@ -47,10 +47,22 @@
 
 
 </style>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/smarteditor/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/resources/smarteditor/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+<script>
+$(document).ready(function(){
+	
+
+	var body = document.getElementById('test');
+	console.log(test);
+	var smart = document.getElementById('smart_editor2');
+	console.log(smart);
+})
+
+</script>
 </head>
 <body>
-<div class="content" style="min-height: 90vh">
+<div id="test" class="content" style="min-height: 90vh">
+
 		<div class="write">
 			<form action="${pageContext.request.contextPath}/Board/insertBoard" method="post">
 			<input class="title mb-3" type="text" id="btitle" name="btitle" placeholder="제목">	
@@ -65,7 +77,7 @@
 </form>
 		</div>
 </div>
-<script type="text/javascript">
+<script>
 var oEditors = [];
 nhn.husky.EZCreator.createInIFrame({
  oAppRef: oEditors,

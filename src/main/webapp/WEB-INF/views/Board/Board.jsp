@@ -166,10 +166,10 @@ dl, dd, dt{
 		</div>
 		
 	</c:forEach>
-	<div>
+	<div class="mb-3">
 	<a class="btn btn-secondary mb-2" href="${pageContext.request.contextPath}/Board/write?category=board">글작성</a>
 	</div>
-	<div class="paginate_box">
+	<div class="paginate_box mb-5">
 	<div class="paginate">
 	<c:if test="${page.prev}"><a style="padding: 5px 2px" href="${pageContext.request.contextPath}/Board?page=${page.startBlock-1}"><i style="vertical-align: bottom;" class="material-icons">navigate_before</i></a></c:if>
 	
