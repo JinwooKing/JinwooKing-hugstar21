@@ -18,6 +18,7 @@ import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -51,9 +52,9 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping("/Story")
-	public String Story(Model model) {
-		model.addAttribute("contentpage", "Story/Story.jsp" );
+	@RequestMapping("/Study")
+	public String Study(Model model) {
+		model.addAttribute("contentpage", "Study/Study.jsp" );
 		return "home";
 	}
 	

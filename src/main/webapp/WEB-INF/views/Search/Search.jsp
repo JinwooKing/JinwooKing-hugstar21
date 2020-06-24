@@ -12,16 +12,16 @@
     color: #777;
 }
 .post_article {
+    overflow: hidden;
     position: relative;
-    width: 100%;
     max-width: 1100px;
-    margin: 0 auto;
+    margin: 0 0px 30px 0;
 }
 .cont_post{
     position: relative;
     max-width: 1100px;
+	padding-right: 200px;
 	border-bottom: 1px solid #ededed;
-	margin-bottom: 50px;
 }
 .cont_post h2 {
     font-size: 24px;
@@ -42,12 +42,11 @@
 .cont_post .post_txt {
     font-size: 14px;
     line-height: 20px;
+    max-height: 40px;
     overflow: hidden;
     text-overflow: ellipsis;
     word-break: break-word;
     margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #ededed;
     color: #666;
 }
 .cont_post dl {
@@ -84,6 +83,25 @@ dl, dd, dt{
     font-size: 0;
     line-height: 0;
 }
+.btn {
+	color: white;
+}
+.paginate_box{
+	text-align: center;
+}
+.paginate a{
+	border: 1px solid silver;
+	border-radius: 16px;
+	padding: 5px 10px;
+	margin: 2px;
+	font-size: 14px;
+	color: #a0a0a0;
+	text-decoration: none;
+}
+.paginate a:hover, .currpage{
+	color: white !important;
+	background-color: #a0a0a0;
+}
 @media all and (max-width:768px){
 .contents {
     max-width: 100%;
@@ -114,6 +132,7 @@ dl, dd, dt{
     padding-left: 20px;
 }
 .cont_post .post_txt {
+    max-height: 60px;
     margin-bottom: 0;
     margin-top: 0;
 }
@@ -127,25 +146,44 @@ dl, dd, dt{
 </style>
 </head>
 <body>
+<!-- <div class="ready"><i class="material-icons">watch_later</i><h2>게시판 준비중입니다.</h2></div> -->
+			<div class="search_result_area" style="background-color: #f7f7f7;border-bottom: 1px solid #e8e8e8;">
+				<div style="font-size: 30px;margin: 0px auto;max-width: 1180px;padding: 36px 40px;overflow: hidden;">
+					<span style="color: #90CAF9;">'${param.keyword}'</span>에 대한 결과<c:if test="${page.totalCount < 1}">가 없습니다.</c:if>
+				</div>
+			</div>
 <div class="content" style="min-height: 90vh">
+	<c:forEach var="index" items="${list}">
 		<div class="post_article">
 			<div class="cont_post">
-				<h2>${detail.btitle}</h2>
-				<dl><dt><i class="xi-time-o"><span class="blind">등록일</span></i></dt><dd>${detail.bwritedate}</dd>
+				<h2><a href="${pageContext.request.contextPath}/Board/detail?bno=${index.bno}">${index.btitle}</a></h2>
+				<div class="cont_img">
+					<a href="${pageContext.request.contextPath}/Board/detail?bno=${index.bno}">
+					<img src="${pageContext.request.contextPath}/resources/img/logo1.png" width="100%" height="100%" alt=""></a>
+				</div>
+				<a href="${pageContext.request.contextPath}/Board/detail?bno=${index.bno}" class="post_txt_wrap">
+					<div class="post_txt">${index.bsearch}</div>
+			    </a>
+				<dl><dt><i class="xi-time-o"><span class="blind">등록일</span></i></dt><dd>${index.bwritedate}</dd>
 					<dt><span class="blind">|</span></dt><dd><span class="line_bar">|</span></dd>
-					<dt><i class="xi-eye"><span class="blind">카운트</span></i></dt><dd>${detail.bhit}</dd></dl>
-				<%-- <div class="cont_img">
-					<img src="${pageContext.request.contextPath}/resources/img/logo1.png" width="100%" height="100%" alt="">
-				</div> --%>
-					<div class="post_txt pt-3">${detail.bcontent}</div>
-					<div class="mb-3">글쓴이 : ${detail.bwriter}</div>
+					<dt><i class="xi-eye"><span class="blind">카운트</span></i></dt><dd>${index.bhit}</dd></dl>
 			</div>
-			
-		<a class="btn btn-secondary mb-5" href="${pageContext.request.contextPath}/Board/deleteBoard?bno=${detail.bno}">글삭제</a>
-		<a class="btn btn-secondary mb-5" href="${pageContext.request.contextPath}/Board/update?bno=${detail.bno}">글수정</a>
-		<a class="btn btn-secondary mb-5" href="${pageContext.request.contextPath}/Board">글목록</a>
 		</div>
 		
+	</c:forEach>
+
+	<div class="paginate_box mb-5">
+	<div class="paginate">
+	<c:if test="${page.prev}"><a style="padding: 5px 2px" href="${pageContext.request.contextPath}/search?keyword=${param.keyword}&page=${page.startBlock-1}"><i style="vertical-align: bottom;" class="material-icons">navigate_before</i></a></c:if>
+	
+	<c:forEach var="index" begin="${page.startBlock}" end="${page.endBlock}" >
+	<c:if test="${page.currPage eq index}"><a class="currpage">${index}</a></c:if>
+	<c:if test="${page.currPage ne index}"><a href="${pageContext.request.contextPath}/search?keyword=${param.keyword}&page=${index}">${index}</a></c:if>
+	</c:forEach>
+	
+	<c:if test="${page.next}"><a style="padding: 5px 2px" href="${pageContext.request.contextPath}/search?keyword=${param.keyword}&page=${page.endBlock+1}"><i style="vertical-align: bottom;" class="material-icons">navigate_next</i></a></c:if>
+	</div>	
+	</div>
 </div>
 </body>
 </html>

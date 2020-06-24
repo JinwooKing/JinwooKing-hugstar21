@@ -157,7 +157,7 @@ dl, dd, dt{
 					<img src="${pageContext.request.contextPath}/resources/img/logo1.png" width="100%" height="100%" alt=""></a>
 				</div>
 				<a href="${pageContext.request.contextPath}/Board/detail?bno=${index.bno}" class="post_txt_wrap">
-					<div class="post_txt">${index.bcontent}</div>
+					<div class="post_txt">${index.bsearch}</div>
 			    </a>
 				<dl><dt><i class="xi-time-o"><span class="blind">등록일</span></i></dt><dd>${index.bwritedate}</dd>
 					<dt><span class="blind">|</span></dt><dd><span class="line_bar">|</span></dd>
@@ -166,7 +166,7 @@ dl, dd, dt{
 		</div>
 		
 	</c:forEach>
-	<div class="mb-3">
+	<div class="write_box mb-3">
 	<a class="btn btn-secondary mb-2" href="${pageContext.request.contextPath}/Board/write?category=board">글작성</a>
 	</div>
 	<div class="paginate_box mb-5">

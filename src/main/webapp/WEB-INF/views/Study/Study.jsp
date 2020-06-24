@@ -6,7 +6,7 @@
 </head>
 <body>
 <div style="height: 90vh;">
-<div class="ready"><i class="material-icons">hourglass_full</i><h2>스토리 준비중입니다.</h2></div>
+<div class="ready"><i class="material-icons">hourglass_full</i><h2>스터디 준비중입니다.</h2></div>
 
 </div>
 </body>
