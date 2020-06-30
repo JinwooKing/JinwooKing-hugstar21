@@ -116,12 +116,12 @@ header{
 .progress-container {
   padding-top: 68px;
   width: 100%;
-  height: 8px;
+  height: 4px;
 }
 
 /* The progress bar (scroll indicator) */
-.progress-bar {
-  height: 8px;
+.prgbar {
+  height: 4px;
   background: #dceffb;
   width: 0%;
 }
@@ -148,6 +148,10 @@ function menu(x) {
   x.classList.toggle("change");
 }
 $(document).ready(function(){
+	function formsubmit(){
+		alert("제출");
+	};
+	
 	//pc크기 펼쳐진 mobile 메뉴와 검색창 사라지기
 	$(window).resize(function(){
 		if($(document).width()>960){
@@ -192,44 +196,44 @@ $(document).ready(function(){
 	  </a>
 	  
 	  <!--  pcnav link -->
-	  <a class="navbar-brand pcnav" href="profile">Profile</a>
-	  <a class="navbar-brand pcnav" href="Story">Story</a>
-	  <a class="navbar-brand pcnav" href="Board">Board</a>
+	  <a class="navbar-brand pcnav" href="${pageContext.request.contextPath}/Profile">Profile</a>
+	  <a class="navbar-brand pcnav" href="${pageContext.request.contextPath}/Study">Study</a>
+	  <a class="navbar-brand pcnav" href="${pageContext.request.contextPath}/Board">Board</a>
 	  <!-- <a class="navbar-brand pcnav" href="About">About</a> -->
 	  
 	  <!--  pcnav search -->
-	  <form class="form-inline pcnav">
-	    <input class="form-control mr-sm-1 search_input" type="search" placeholder="jinstar에서 검색" aria-label="Search">
+	  <form class="form-inline pcnav" action="${pageContext.request.contextPath}/search">
+	    <input class="form-control mr-sm-1 search_input" name="keyword" type="search" placeholder="jinstar에서 검색" aria-label="Search">
 	    <button type="submit" class="pcbtn_search">
 	    	<i class="xi-search xi-x"></i>
 	    </button>
 	  </form>
-	
 	  <!-- mobile search call -->
-	  <button type="submit" class="mobilebtn_search mobilenav">
+	  <button class="mobilebtn_search mobilenav">
 	   	<i class="xi-search xi-x"></i>
 	  </button>
+	  
 	</nav>
 	
 	<!--  progress bar -->
 	<div class="progress-container">
-    	<div class="progress-bar" id="prBar"></div>
+    	<div class="progress-bar prgbar" id="prBar"></div>
   	</div>  	
   	
   	<!-- mobile nav link -->
 	<div class="togglenav">
 		<ul class="list-group list-group-flush">
-		  <li class="list-group-item"><a href="profile">Profile</a></li>
-		  <li class="list-group-item"><a href="Story">Story</a></li>
-		  <li class="list-group-item"><a href="Board">Board</a></li>
+		  <li class="list-group-item"><a href="${pageContext.request.contextPath}/Profile">Profile</a></li>
+		  <li class="list-group-item"><a href="${pageContext.request.contextPath}/Study">Study</a></li>
+		  <li class="list-group-item"><a href="${pageContext.request.contextPath}/Board">Board</a></li>
 		  <!-- <li class="list-group-item"><a href="About">About</a></li> -->
 		</ul>
 	</div>
 	
 	<!-- mobile search input -->
 	<div class="togglesearch">
-		<form class="form-inline">
-			<input class="form-control mr-sm-1 search_input" type="search" placeholder="jinstar에서 검색" aria-label="Search">
+		<form class="form-inline" action="${pageContext.request.contextPath}/search">
+			<input class="form-control mr-sm-1 search_input" name="keyword" type="search" placeholder="jinstar에서 검색" aria-label="Search">
 		</form>
 	</div>
 </div>

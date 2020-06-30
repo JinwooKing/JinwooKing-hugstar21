@@ -9,6 +9,7 @@
     
     <security:http pattern="/resources/css/**" security="none"/>
 	<security:http pattern="/resources/js/**" security="none"/>
+	<security:http pattern="/resources/smarteditor/**" security="none"/>
 	
     <!-- <bean id="userLoginSuccess" class="com.sunstar.handler.UserLoginSucessHandler"></bean>
 	 

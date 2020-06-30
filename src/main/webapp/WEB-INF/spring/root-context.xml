@@ -15,7 +15,7 @@
       <property name="host" value="smtp.naver.com" />
       <property name="port" value="587" />
       <property name="username" value="wlsdn9489" />
-      <property name="password" value="wlsdn2619$" />
+      <property name="password" value="spdlqj26191!" />
       <property name="javaMailProperties">
          <props>
             <prop key="mail.smtp.auth">true</prop>
@@ -24,7 +24,7 @@
       </property>
    </bean>
 	<context:property-placeholder location="classpath:db.properties" />
-		
+ 		
 	<bean name="dbconf" class="com.zaxxer.hikari.HikariConfig">
 
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>

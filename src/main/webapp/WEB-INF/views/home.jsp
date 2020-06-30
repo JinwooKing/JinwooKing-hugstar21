@@ -23,11 +23,38 @@
 
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 
+<!-- google icon -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 <title>jinstar</title>
 <style>
 body::-webkit-scrollbar { 
     display: none;
 }
+/* 준비중 */
+	.ready{ 
+	width: 45vh; 
+	height: 45vh;
+	border: 1px solid #d6d6d6;
+	border-radius: 22.5vh;
+	box-shadow: 0 1px 1.5vh rgba(0,0,0,.4);
+	margin: 20vh auto;
+	text-align: center;
+	}
+	.ready .material-icons{
+	margin: 12.5vh 17.5vh 0;
+	font-size: 10vh;
+	color: rgba(0,0,0,.25);
+	}
+	
+	.ready h2{
+	padding-top: 2vh;
+	padding-left: 1vh;
+	font-size: 3vh;
+	color: rgba(0,0,0,.3);
+	font-weight: bolder;
+	}
+/* end 준비중 */
 </style>
 </head>
 <body>
