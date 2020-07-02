@@ -15,7 +15,7 @@
  <selectKey order="BEFORE" keyProperty="bno" resultType="String">
  select ifnull(max(bno),0)+1 from board
  </selectKey>
- insert into board values(#{bno},#{btitle},#{ir1},#{bsearch},now(),"jinwoo",0)
+ insert into board values(#{bno},#{btitle},#{ir1},#{bsearch},now(),"jinwoo",0,#{uploadfile})
  </insert>
  
  <delete id="deleteBoard" parameterType="String">

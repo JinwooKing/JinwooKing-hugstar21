@@ -6,18 +6,22 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.jinstar.DTO.MakePage;
 import com.jinstar.service.BoardService;
+import com.jinstar.service.FileUploadService;
 
 @Controller
 public class BoardController {
 
 	@Autowired
 	private BoardService boardService;
+	
+	@Autowired
+	private FileUploadService fileUploadService;
 	
 	@RequestMapping("/Board")
 	public String Board(Model model, @RequestParam HashMap<String, Object> map) {
@@ -51,13 +55,19 @@ public class BoardController {
 	@RequestMapping("/Board/write")
 	public String Boardwrite(Model model, @RequestParam HashMap<String, Object> map) {
 		System.out.println(map);
+		
 		model.addAttribute("contentpage", "Board/write.jsp" );
 		return "home";
 	}
 	
 	@RequestMapping("/Board/insertBoard")
-	public String BoardinsertBoard(Model model, @RequestParam HashMap<String, Object> map) {
+	public String BoardinsertBoard(Model model, @RequestParam HashMap<String, Object> map, @RequestParam MultipartFile uploadfile) {
 		System.out.println(map);
+		System.out.println(uploadfile);
+		if(!uploadfile.isEmpty()) {
+			System.out.println("파일이 있습니다.");
+			map.put("uploadfile",fileUploadService.restore(uploadfile));	
+		}
 		boardService.insertBoard(map);
 		
 		return "redirect:/Board";

@@ -53,7 +53,8 @@
 <div id="test" class="content" style="min-height: 90vh">
 
 		<div class="write">
-			<form action="${pageContext.request.contextPath}/Board/insertBoard" method="post">
+			<form action="${pageContext.request.contextPath}/Board/insertBoard" method="post" enctype="multipart/form-data">
+			<input type="file" name="uploadfile" id="uploadfile">
 			<input id="bsearch" type="hidden" name="bsearch">
 			<input id="btitle" class="title mb-3" type="text" id="btitle" name="btitle" placeholder="제목" required="required">	
 			<textarea name="ir1" id="ir1" rows="10" cols="100" style="width:100%; height:612px; display:none;"></textarea>

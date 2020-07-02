@@ -137,6 +137,7 @@ dl, dd, dt{
 				<%-- <div class="cont_img">
 					<img src="${pageContext.request.contextPath}/resources/img/logo1.png" width="100%" height="100%" alt="">
 				</div> --%>
+					<img src="${pageContext.request.contextPath}/upload/${detail.bfile}" alt="${detail.bfile}">
 					<div class="post_txt pt-3">${detail.bcontent}</div>
 					<div class="mb-3">글쓴이 : ${detail.bwriter}</div>
 			</div>
