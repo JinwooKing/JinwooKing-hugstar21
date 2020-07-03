@@ -16,6 +16,8 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/smarteditor/js/service/SE2M_Configuration.js" charset="utf-8"></script>	<!-- 설정 파일 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/smarteditor/js/service/SE2BasicCreator.js" charset="utf-8"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/smarteditor/js/smarteditor2.js" charset="utf-8"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/smarteditor/photo_uploader/plugin/hp_SE2M_AttachQuickPhoto.js" charset="utf-8"> </script> <!-- 사진 플러그인 -->
+
 </head>
 <body>
 
@@ -529,6 +531,13 @@
 					<!--//@lazyload_html-->
 				</li>
 </ul>
+		<ul class="se2_multy">
+      <li class="se2_mn husky_seditor_ui_photo_attach">
+        <button type="button" class="se2_photo ico_btn">
+          <span class="se2_icon"></span><span class="se2_mntxt">사진<span class="se2_new"></span></span>
+        </button>
+      </li>
+    </ul>
 			</div>
 			<!-- //704이상 -->
 		</div>

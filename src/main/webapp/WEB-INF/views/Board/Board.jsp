@@ -154,7 +154,9 @@ dl, dd, dt{
 				<h2><a href="${pageContext.request.contextPath}/Board/detail?bno=${index.bno}">${index.btitle}</a></h2>
 				<div class="cont_img">
 					<a href="${pageContext.request.contextPath}/Board/detail?bno=${index.bno}">
-					<img src="${pageContext.request.contextPath}/resources/img/logo1.png" width="100%" height="100%" alt=""></a>
+					<c:if test="${empty index.bfile}"><img src="${pageContext.request.contextPath}/resources/img/logo1.png" width="100%" height="100%" alt=""></c:if>
+					<c:if test="${!empty index.bfile}"><img src="${pageContext.request.contextPath}/resources/upload/${index.bfile}" width="100%" height="100%" alt=""></c:if>
+					</a>
 				</div>
 				<a href="${pageContext.request.contextPath}/Board/detail?bno=${index.bno}" class="post_txt_wrap">
 					<div class="post_txt">${index.bsearch}</div>

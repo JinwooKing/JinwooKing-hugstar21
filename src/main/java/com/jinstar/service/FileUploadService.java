@@ -10,13 +10,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class FileUploadService {
-	// 리눅스 기준으로 파일 경로를 작성 ( 루트 경로인 /으로 시작한다. )
-	// 윈도우라면 workspace의 드라이브를 파악하여 JVM이 알아서 처리해준다.
-	// 따라서 workspace가 C드라이브에 있다면 C드라이브에 upload 폴더를 생성해 놓아야 한다.
-	//private static final String SAVE_PATH = "C://Users//jinwo//git//JinwooKing-hugstar21//src//main//webapp//upload";
-	//private static final String PREFIX_URL = "C://Users//jinwo//git//JinwooKing-hugstar21//src//main//webapp//upload/";
-	private static final String SAVE_PATH = "/usr/local/apache-tomcat-9.0.33/webapps/JinwooKing-hugstar21/upload";
-	private static final String PREFIX_URL = "/usr/local/apache-tomcat-9.0.33/webapps/JinwooKing-hugstar21/upload";
+	
+	private static final String SAVE_PATH = "C://Users//jinwo//git//JinwooKing-hugstar21//src//main//webapp//resources//upload";
+	private static final String PREFIX_URL = "C://Users//jinwo//git//JinwooKing-hugstar21//src//main//webapp//resources//upload/";
+	//private static final String SAVE_PATH = "/usr/local/apache-tomcat-9.0.33/webapps/JinwooKing-hugstar21/resources/upload";
+	//private static final String PREFIX_URL = "/usr/local/apache-tomcat-9.0.33/webapps/JinwooKing-hugstar21/resources/upload";
 	
 	public String restore(MultipartFile multipartFile) {
 		String url = null;
