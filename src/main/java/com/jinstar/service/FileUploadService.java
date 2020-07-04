@@ -10,11 +10,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class FileUploadService {
-	
-	private static final String SAVE_PATH = "C://Users//jinwo//git//JinwooKing-hugstar21//src//main//webapp//resources//upload";
-	private static final String PREFIX_URL = "C://Users//jinwo//git//JinwooKing-hugstar21//src//main//webapp//resources//upload/";
-	//private static final String SAVE_PATH = "/usr/local/apache-tomcat-9.0.33/webapps/JinwooKing-hugstar21/resources/upload";
-	//private static final String PREFIX_URL = "/usr/local/apache-tomcat-9.0.33/webapps/JinwooKing-hugstar21/resources/upload";
+	//private static final String SAVE_PATH = "C:/Users/jinwo/git/JinwooKing-hugstar21/src/main/webapp/resources/upload";
+	//private static final String PREFIX_URL = "C:/Users/jinwo/git/JinwooKing-hugstar21/src/main/webapp/resources/upload/";
+	private static final String SAVE_PATH = "/usr/local/apache-tomcat-9.0.33/webapps/JinwooKing-hugstar21/resources/upload";
+	private static final String PREFIX_URL = "/usr/local/apache-tomcat-9.0.33/webapps/JinwooKing-hugstar21/resources/upload/";
 	
 	public String restore(MultipartFile multipartFile) {
 		String url = null;

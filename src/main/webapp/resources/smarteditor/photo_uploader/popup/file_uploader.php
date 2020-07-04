@@ -25,7 +25,7 @@ if(bSuccessUpload) {
 		
 		$url .= "&bNewLine=true";
 		$url .= "&sFileName=".urlencode(urlencode($name));
-		$url .= "&sFileURL=/smarteditor/photo_uploader/demo/uploade/".urlencode(urlencode($name));
+		$url .= "&sFileURL=/resources/smarteditor/photo_uploader/demo/upload/".urlencode(urlencode($name));
 	}
 }
 // FAILED

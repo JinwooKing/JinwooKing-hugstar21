@@ -120,6 +120,9 @@ dl, dd, dt{
 .cont_post dl {
     padding-top: 15px;
 }
+.post_txt img{
+	width : 100%;	
+}
 }
 @media all and (max-width:576px){
 }

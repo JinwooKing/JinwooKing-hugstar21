@@ -21,7 +21,7 @@
 		$file->content = file_get_contents("php://input");
 
 		$uploadDir = '../../upload/';
-		if(!is_dir($uploadDir)){
+		if(!is_dir($upload22222Dir)){
 			mkdir($uploadDir, 0777);
 		}
 		
@@ -30,7 +30,7 @@
 		if(file_put_contents($newPath, $file->content)) {
 			$sFileInfo .= "&bNewLine=true";
 			$sFileInfo .= "&sFileName=".$file->name;
-			$sFileInfo .= "&sFileURL=/smarteditor/photo_uploader/demo/uploade/".$filename;
+			$sFileInfo .= "&sFileURL=/resources/smarteditor/photo_uploader/demo/upload/".$filename;
 		}
 		
 		echo $sFileInfo;
