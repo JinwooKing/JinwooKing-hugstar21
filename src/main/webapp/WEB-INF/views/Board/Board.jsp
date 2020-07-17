@@ -173,14 +173,14 @@ dl, dd, dt{
 	</div>
 	<div class="paginate_box mb-5">
 	<div class="paginate">
-	<c:if test="${page.prev}"><a style="padding: 5px 2px" href="${pageContext.request.contextPath}/Board?page=${page.startBlock-1}"><i style="vertical-align: bottom;" class="material-icons">navigate_before</i></a></c:if>
+	<%-- <c:if test="${page.prev}"><a style="padding: 5px 2px" href="${pageContext.request.contextPath}/Board?page=${page.startBlock-1}"><i style="vertical-align: bottom;" class="material-icons">navigate_before</i></a></c:if>
 	
 	<c:forEach var="index" begin="${page.startBlock}" end="${page.endBlock}" >
 	<c:if test="${page.currPage eq index}"><a class="currpage">${index}</a></c:if>
 	<c:if test="${page.currPage ne index}"><a href="${pageContext.request.contextPath}/Board?page=${index}">${index}</a></c:if>
 	</c:forEach>
 	
-	<c:if test="${page.next}"><a style="padding: 5px 2px" href="${pageContext.request.contextPath}/Board?page=${page.endBlock+1}"><i style="vertical-align: bottom;" class="material-icons">navigate_next</i></a></c:if>
+	<c:if test="${page.next}"><a style="padding: 5px 2px" href="${pageContext.request.contextPath}/Board?page=${page.endBlock+1}"><i style="vertical-align: bottom;" class="material-icons">navigate_next</i></a></c:if> --%>
 	</div>
 	</div>
 </div>

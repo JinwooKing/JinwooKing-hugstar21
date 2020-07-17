@@ -334,8 +334,8 @@
     	var tempFile,
     		sUploadURL;
     	
-    	sUploadURL= '/JinwooKing-hugstar21/multiplephotoUpload'; 	//upload URL
-    	//sUploadURL= '/controller/multiplephotoUpload'; 	//upload URL
+    	//sUploadURL= '/JinwooKing-hugstar21/multiplephotoUpload'; 	//upload URL
+    	sUploadURL= '/controller/multiplephotoUpload'; 	//upload URL
     	
     	//파일을 하나씩 보내고, 결과를 받음.
     	for(var j=0, k=0; j < nImageInfoCnt; j++) {
